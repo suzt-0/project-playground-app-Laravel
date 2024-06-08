@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('start_date');
             $table->date('due_date');
             $table->text('description');
-            // $table->enum('priority',[]);
+            $table->enum('priority', ['low', 'medium', 'high', 'urgent']);
             $table->timestamps();
         });
     }

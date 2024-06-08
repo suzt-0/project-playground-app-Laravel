@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('description');
             $table->date('start_date');
             $table->date('end_date');
-            // $table->enum('status',['']);
+            $table->enum('status',['Not-Started','Ongoing','Completed','Dropped']);
             $table->timestamps();
         });
     }
