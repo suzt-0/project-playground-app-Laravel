@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->text('comment_text');
+            $table->enum('comment_type',['issue','suggestions']);
             $table->timestamps();
         });
     }
