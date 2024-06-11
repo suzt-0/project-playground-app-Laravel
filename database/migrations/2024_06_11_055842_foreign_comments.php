@@ -13,10 +13,10 @@ return new class extends Migration
     {
        Schema::table('comments',function(Blueprint $table){
         $table->unsignedBigInteger('user_id');
-        $table->foreign('user_id')->refrences('id')->on('users');
+        $table->foreign('user_id')->references('id')->on('users');
 
         $table->unsignedBigInteger('task_id');
-        $table->foreign('task_id')->refrences('id')->on('tasks');
+        $table->foreign('task_id')->references('id')->on('tasks');
        });
     }
 
