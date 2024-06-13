@@ -44,7 +44,7 @@
                    <h2><q class="mb-8 leading-relaxed p-0 m-0 typewriter max-w-fit ">Manage your Projects more efficiently with Project Management System</q></h2>
                 <div class="flex justify-center">
 
-                    <a href="{{route('signup')}}">
+                    <a href="{{route('register')}}">
                         <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 rounded text-lg focus:outline-none hover:bg-indigo-600">
                             Signup
                         </button>

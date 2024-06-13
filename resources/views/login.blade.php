@@ -74,7 +74,7 @@
             {{-- Redirection to signup form here --}}
             <p class="mt-10 text-center text-sm text-gray-500">
                 Not a member?
-                <a href="{{route('signup')}}" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Register</a>
+                <a href="{{route('register')}}" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Register</a>
             </p>
         </div>
     </div>
