@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-slate-100">
 
 <head>
     <meta charset="UTF-8" />
@@ -51,7 +51,7 @@
                         </a>
 
                     <a href="{{route('login')}}">
-                        <button class="ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 rounded text-lg focus:outline-none hover:bg-gray-300">
+                        <button class="ml-4 inline-flex text-gray-800 bg-gray-300 border-0 py-2 px-6 rounded text-lg focus:outline-none hover:bg-gray-400 hover:text-gray-900">
                             Login
                         </button>
                     </a>

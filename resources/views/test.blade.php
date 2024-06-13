@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full bg-white">
+<html lang="en" class="bg-slate-100">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>testing purposes only</title>
-    @vite('resources/css/dashboard.css')
+    <title>Testing purpposes only</title>
     @vite('resources/css/app.css')
 </head>
 
-<body class="h-full">
+<body>
     {{-- navbar starts here --}}
     <header class="text-gray-700 body-font border-b border-gray-200">
         <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
@@ -23,8 +22,7 @@
                 <span class="ml-3 text-xl">Project Management System</span>
             </a>
             <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center p-1">
-                <a href="{{route('home')}}"
-                    class="mr-5 hover:text-gray-900 hover:underline hover:decoration-gray-900">Home</a>
+                <a href="{{route('home')}}" class="mr-5 p-1 hover:text-gray-900 hover:underline hover:decoration-gray-900">Home</a>
                 <a href="#" class="mr-5 p-1 hover:text-gray-900 hover:underline hover:decoration-gray-900">About</a>
                 <a href="#" class="mr-5 p-1 hover:text-gray-900 hover:underline hover:decoration-gray-900">Contacts</a>
                 <a href="#" class="mr-5 p-1 hover:text-gray-900 hover:underline hover:decoration-gray-900">User
@@ -49,7 +47,7 @@
                     <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
                     <div class="mt-2">
                         <input id="email" name="email" type="email" autocomplete="email" required
-                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-indigo-400 placeholder:text-gray-400 focus:outline-indigo-600 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            class="block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-indigo-400 placeholder:text-gray-400 focus:outline-indigo-600 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
                 </div>
 
@@ -62,7 +60,7 @@
                     </div>
                     <div class="mt-2">
                         <input id="password" name="password" type="password" autocomplete="current-password" required
-                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-indigo-400 placeholder:text-gray-400 focus:outline-indigo-600 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            class="block w-full rounded-md border-0 py-2 px-3  text-gray-900 shadow-sm ring-1 ring-inset ring-indigo-400 placeholder:text-gray-400 focus:outline-indigo-600 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
                 </div>
 
@@ -77,7 +75,7 @@
             {{-- Redirection to signup form here --}}
             <p class="mt-10 text-center text-sm text-gray-500">
                 Not a member?
-                <a href="#" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Get Started!!</a>
+                <a href="{{route('signup')}}" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Register</a>
             </p>
         </div>
     </div>
