@@ -19,6 +19,10 @@ Route::get('/signup', function(){
     return view('signup');
 })->name('signup');
 
+Route::get('/test', function(){
+    return view('test');
+})->name('test');
+
 Route::get('/about', function(){
     // return a static about page with no data from database
 })->name('about');
