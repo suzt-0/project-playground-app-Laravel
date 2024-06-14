@@ -23,14 +23,6 @@ Route::get('/test', function(){
     return view('test');
 })->name('test');
 
-Route::get('/about', function(){
-    // return a static about page with no data from database
-})->name('about');
-
-Route::get('/contacts', function(){
-    // return a static about page with no data from database
-})->name('contacts');
-
 Route::controller(ProjectController::class)->group(function () {
     // add routes related to ProjectController here
 });
