@@ -11,9 +11,10 @@
 </head>
 
 <body>
-    <header class="text-gray-700 body-font border-b border-gray-200">
+    <header class="text-gray-700 body-font border-b border-gray-300">
         <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="#" target="_blank">
+            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="{{route('home')}}">
+                {{-- logo needs to be changed --}}
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
                     stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
                     viewBox="0 0 24 24">
@@ -34,28 +35,29 @@
     <section class="text-gray-700 body-font">
         <div class="container mx-auto flex px-5 py-24 flex-col md:flex-row items-center">
 
-            <div class="flex flex-col mb-16 items-center text-center md:w-1/2 md:pr-16 md:items-start md:text-left md:mb-0 lg:flex-grow">
+            <div
+                class="flex flex-col mb-16 items-center text-center md:w-1/2 md:pr-16 md:items-start md:text-left md:mb-0 lg:flex-grow">
 
-                <h1 class="title-font text-3xl mb-4 font-medium text-gray-900 sm:text-4xl ">Project
-                    <br class="hidden lg:inline-block">
-                    Management System 
+                <h1 class="title-font text-3xl mb-4 font-medium text-gray-900 sm:text-4xl">Project
+                    <br class="inline-block lg:hidden">
+                    Management System
                 </h1>
-               {{-- Tried adding a typing animations --}}
-                   <h2><q class="mb-8 leading-relaxed p-0 m-0 typewriter max-w-fit ">Manage your Projects more efficiently with Project Management System</q></h2>
-                <div class="flex justify-center">
-
+                <h2><q class="mb-8 leading-relaxed max-w-fit ">Manage your Projects more efficiently with Project Management System</q></h2>
+                <div class="mt-4 flex justify-center">
                     <a href="{{route('register')}}">
-                        <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 rounded text-lg focus:outline-none hover:bg-indigo-600">
-                            Signup
+                        <button
+                            class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 rounded text-lg focus:outline-none hover:bg-indigo-600">
+                            Register
                         </button>
-                        </a>
+                    </a>
 
                     <a href="{{route('login')}}">
-                        <button class="ml-4 inline-flex text-gray-800 bg-gray-300 border-0 py-2 px-6 rounded text-lg focus:outline-none hover:bg-gray-400 hover:text-gray-900">
+                        <button
+                            class="ml-4 inline-flex text-gray-800 bg-gray-300 border-0 py-2 px-6 rounded text-lg focus:outline-none hover:bg-gray-400 hover:text-gray-900">
                             Login
                         </button>
                     </a>
-                    
+
                 </div>
             </div>
 
