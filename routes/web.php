@@ -23,24 +23,33 @@ Route::get('/test', function(){
     return view('test');
 })->name('test');
 
-Route::controller(ProjectController::class)->group(function () {
-    // add routes related to ProjectController here
-});
+Route::get('/about', function(){
+    return view('about');
+})->name('about');
 
-Route::controller(ProjectMemberController::class)->group(function () {
-    // add routes related to ProjectMemberController here
-});
+Route::get('/contact', function(){
+    return view('contact');
+})->name('contact');
 
-Route::controller(TaskController::class)->group(function () {
-    // add routes related to TaskController here
-});
+Route::get('/user-manual', function(){
+    return view('user-manual');
+})->name('user-manual');
 
-Route::controller(CommentController::class)->group(function () {
-    // add routes related to CommentController here
-});
+Route::get('/project', function(){
+    return view('project');
+})->name('project');
 
-Route::controller(UserController::class)->group(function () {
-    // add routes related to UserController here
-});
+Route::get('/project_admin', function(){
+    return view('project_admin');
+})->name('project_admin');
+
+Route::get('/project_member', function(){
+    return view('project_member');
+})->name('project_member');
+
+Route::get('/task', function(){
+    return view('task');
+})->name('task');
+
 
 
