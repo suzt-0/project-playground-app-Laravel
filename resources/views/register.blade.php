@@ -50,21 +50,21 @@
                 <div>
                     <label for="userName" class="block text-sm font-medium leading-6 text-gray-900">User Name</label>
                     <div class="mt-2">
-                        <input id="name" name="name" type="text" autocomplete="name" required
+                        <input id="name" name="name" type="text" required
                             class="block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-indigo-400 placeholder:text-gray-400 focus:outline-indigo-600 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
                 </div>
                 <div>
                     <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
                     <div class="mt-2">
-                        <input id="email" name="email" type="email" autocomplete="email" required
+                        <input id="email" name="email" type="email" required
                             class="block w-full rounded-md border-0 py-2 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-indigo-400 placeholder:text-gray-400 focus:outline-indigo-600 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
                 </div>
 
                 <div>
                     <div class="flex items-center justify-between">
-                        <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Confirm Password</label>
+                        <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
                         <div class="text-sm">
                             {{-- <a href="#" class="font-semibold text-indigo-600 hover:text-red-600">Forgot password?</a> --}}
                             <p class="italic font-semibold text-gray-600" >Minimum 8 characters</p>
