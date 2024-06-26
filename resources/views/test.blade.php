@@ -12,23 +12,41 @@
 <body class="bg-gray-200">
   {{-- trying to create a navbar component for dashboard --}}
   <header class="text-gray-700 body-font border-b border-gray-200">
-    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+    <div class="container m-1 flex flex-wrap p-5 flex-col md:flex-row items-center">
 
       <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="{{route('home')}}"">
-            <svg xmlns=" http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+        {{-- <svg xmlns=" http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
         stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
         viewBox="0 0 24 24">
         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+        </svg> --}}
+        <svg width="70px" height="70px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink" fill="#3949AB">
+          <g id="SVGRepo_bgCarrier" stroke-width=""></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <title>project-new</title>
+            <g id="Page-1" stroke="none" stroke-width="1" fill="#3949AB" fill-rule="evenodd">
+              <g id="Combined-Shape" fill="currentcolor" transform="translate(64.000000, 34.346667)">
+                <path
+                  d="M192,-7.10542736e-15 L384,110.851252 L384,242.986 L341.333,242.986 L341.333,157.655 L213.333,231.555 L213.333,431.088 L192,443.405007 L0,332.553755 L0,110.851252 L192,-7.10542736e-15 Z M341.333333,264.32 L341.333,328.32 L405.333333,328.32 L405.333333,370.986667 L341.333,370.986 L341.333333,434.986667 L298.666667,434.986667 L298.666,370.986 L234.666667,370.986667 L234.666667,328.32 L298.666,328.32 L298.666667,264.32 L341.333333,264.32 Z M42.666,157.654 L42.6666667,307.920144 L170.666,381.82 L170.666,231.555 L42.666,157.654 Z M192,49.267223 L66.1333333,121.936377 L192,194.605531 L317.866667,121.936377 L192,49.267223 Z">
+                </path>
+              </g>
+            </g>
+          </g>
         </svg>
-        <span class="ml-3 text-xl">Project Management System</span>
+        <span class="ml-3 text-gray-700 text-2xl">Project Management System</span>
       </a>
 
       <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center p-1">
         <a href="{{route('home')}}"
-          class="mr-5 p-1 hover:text-gray-900 hover:underline hover:decoration-gray-900">Home</a>
-        <a href="#" class="mr-5 p-1 hover:text-gray-900 hover:underline hover:decoration-gray-900">About</a>
-        <a href="#" class="mr-5 p-1 hover:text-gray-900 hover:underline hover:decoration-gray-900">Contacts</a>
-        <a href="#" class="mr-5 p-1 hover:text-gray-900 hover:underline hover:decoration-gray-900">User Manual</a>
+          class="mr-5 p-1 hover:text-gray-900 hover:underline hover:decoration-gray-900 ">Home</a>
+        <a href="#" 
+          class="mr-5 p-1 hover:text-gray-900 hover:underline hover:decoration-gray-900">About</a>
+        <a href="#" 
+          class="mr-5 p-1 hover:text-gray-900 hover:underline hover:decoration-gray-900">Contacts</a>
+        <a href="#" 
+          class="mr-5 p-1 hover:text-gray-900 hover:underline hover:decoration-gray-900">User Manual</a>
 
         <button
           class="relative p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:bg-gray-100 focus:text-gray-600 rounded-full">
@@ -68,13 +86,13 @@
 
   {{-- navbar ends here --}}
 
-  <main class="p-6 sm:p-10 space-y-6">
-    <div class="flex flex-col space-y-6 md:space-y-0 md:flex-row justify-between">
+  <main class="  sm:p-10 space-y-4">
+    <div class="flex flex-col space-y-4 md:space-y-0 md:flex-row justify-between">
       <div class="mr-6">
-        <h1 class="text-5xl text-gray-900 font-semibold mb-2.5">Dashboard</h1>
-        <h2 class=" text-2xl text-gray-900 font-semibold ml-2">Sujit Bhattarai</h2>
+        <h1 class="text-5xl text-gray-700 font-semibold mb-1.5">Sujit Bhattarai</h1>
+        {{-- <h2 class=" text-2xl text-gray-900 font-semibold ml-2">Sujit Bhattarai</h2> --}}
       </div>
-      <div class="flex flex-wrap items-start justify-end -mb-3">
+      <div class="flex flex-wrap items-start justify-end -mb-3 mx-4  ">
         <button
           class="inline-flex px-5 py-3 text-indigo-600 hover:text-indigo-700 focus:text-indigo-700 hover:bg-indigo-100 focus:bg-indigo-100 border border-indigo-600 rounded-md mb-3">
           <svg aria-hidden="true" fill="none" viewbox="0 0 24 24" stroke="currentColor"
@@ -94,8 +112,8 @@
         </button>
       </div>
     </div>
-    <section class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
-      <div class="flex items-center p-8 bg-white shadow rounded-lg">
+    <section class="grid m-2 md:grid-cols-2 xl:grid-cols-4 gap-6">
+      <div class="flex items-center p-8 bg-white rounded-lg shadow-md shadow-slate-400 ">
         <div
           class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-indigo-600 bg-blue-100 rounded-full mr-6">
           <svg aria-hidden="true" fill="none" viewbox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
@@ -110,7 +128,7 @@
           <span class="block text-gray-600">My Projects</span>
         </div>
       </div>
-      <div class="flex items-center p-8 bg-white shadow rounded-lg">
+      <div class="flex items-center p-8 bg-white rounded-lg  shadow-md shadow-slate-400">
         <div
           class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-purple-600 bg-purple-100 rounded-full mr-6">
           <svg aria-hidden="true" fill="none" viewbox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
@@ -123,7 +141,7 @@
           <span class="block text-gray-500">Joined Projects</span>
         </div>
       </div>
-      <div class="flex items-center p-8 bg-white shadow rounded-lg">
+      <div class="flex items-center p-8 bg-white rounded-lg  shadow-md shadow-slate-400">
         <div
           class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-green-600 bg-green-100 rounded-full mr-6">
           {{-- <svg fill="#000000" width="800px" height="800px" viewBox="0 0 1920 1920"
@@ -174,7 +192,7 @@
           <span class="block text-gray-500"></span>
         </div>
       </div> --}}
-      <div class="flex items-center p-8 bg-white shadow rounded-lg">
+      <div class="flex items-center p-8 bg-white rounded-lg shadow-md shadow-slate-400">
         <div
           class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-red-600 bg-red-100 rounded-full mr-6">
           <svg width="800px" height="800px" fill="currentColor" stroke="currentColor" viewBox="0 0 48 48"
@@ -205,16 +223,18 @@
         </div>
       </div>
     </section>
-    <section class="grid md:grid-cols-2 xl:grid-cols-4 xl:grid-rows-3 xl:grid-flow-col gap-6">
-      <div class="flex flex-col md:col-span-2 md:row-span-2 bg-white shadow rounded-lg">
-        <div class="px-6 py-5 font-semibold border-b border-gray-100">Notes for self</div>
+
+    <section class="grid md:grid-cols-2 xl:grid-cols-4 xl:grid-rows-3 xl:grid-flow-col gap-2">
+
+      <div class="flex flex-col md:col-span-2 md:row-span-2 bg-white rounded-lg shadow-md shadow-slate-400">
+        <div class="px-6 py-5 font-semibold border-b border-gray-100">Notes</div>
         <div class="p-4 flex-grow">
           <div
             class="flex items-center justify-center h-full px-4 py-16 text-gray-400 text-3xl font-semibold bg-gray-100 border-2 border-gray-200 border-dashed rounded-md">
-            Things to do</div>
+            +</div>
         </div>
       </div>
-      <div class="flex items-center p-8 bg-white shadow rounded-lg">
+      <div class="flex items-center p-7 bg-white rounded-lg shadow-md shadow-slate-400">
         <div
           class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-yellow-600 bg-yellow-100 rounded-full mr-6">
           <svg aria-hidden="true" fill="none" viewbox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
@@ -230,10 +250,10 @@
           <span class="block text-gray-500">Lessons left for this week</span>
         </div>
       </div>
-      <div class="flex items-center p-8 bg-white shadow rounded-lg">
+      <div class="flex items-center p-7 bg-white rounded-lg  shadow-md shadow-slate-400">
         <div
-          class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-teal-600 bg-teal-100 rounded-full mr-6">
-          <svg aria-hidden="true" fill="none" viewbox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+          class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-red-600 bg-red-100 rounded-full mr-6 ">
+          <svg aria-hidden="true" fill="none" viewbox="0 0 24 24" stroke="#E74C3C" class="h-6 w-6">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
@@ -243,7 +263,7 @@
           <span class="block text-gray-500">Time left for nearest deadline</span>
         </div>
       </div>
-      <div class="row-span-3 bg-white shadow rounded-lg">
+      <div class="row-span-3 bg-white rounded-lg shadow-md shadow-slate-400">
         <div class="flex items-center justify-between px-6 py-5 font-semibold border-b border-gray-100">
           <span>Tasks to do</span>
           <button type="button"
@@ -258,7 +278,21 @@
           </button>
           <!-- Refer here for full dropdown menu code: https://tailwindui.com/components/application-ui/elements/dropdowns -->
         </div>
-        <div class="overflow-y-auto" style="max-height: 24rem;">
+        <ul class="p-6 space-y-6">
+          <li
+            class="flex items-center border-2 border-transparent rounded shadow p-1 hover:border-indigo-300  hover:cursor-pointer">
+            Add tasks here dynamically</li>
+          <li
+            class="flex items-center border-2 border-transparent rounded shadow p-1 hover:border-indigo-300  hover:cursor-pointer">
+            Add tasks here dynamically</li>
+          <li
+            class="flex items-center border-2 border-transparent rounded shadow p-1 hover:border-indigo-300  hover:cursor-pointer">
+            Add tasks here dynamically</li>
+          <li
+            class="flex items-center border-2 border-transparent rounded shadow p-1 hover:border-indigo-300  hover:cursor-pointer">
+            Add tasks here dynamically</li>
+        </ul>
+        {{-- <div class="overflow-y-auto" style="max-height: 24rem;">
           <ul class="p-6 space-y-6">
             <li class="flex items-center">
               <div class="h-10 w-10 mr-3 bg-gray-100 rounded-full overflow-hidden">
@@ -322,25 +356,25 @@
               <span class="ml-auto font-semibold">7.7</span>
             </li>
           </ul>
-        </div>
+        </div> --}}
       </div>
-      <div class="flex flex-col row-span-3 bg-white shadow rounded-lg">
-        <div class="px-6 py-5 font-semibold border-b border-gray-100">Your Aim Of Getting Into Tech</div>
+      <div class="flex flex-col row-span-3 bg-white rounded-lg shadow-md shadow-slate-400 ">
+        <div class="px-6 py-5 font-semibold font-mono text-2xl border-b border-gray-100">Quote of the day</div>
         <div class="p-4 flex-grow">
           <div
-            class="flex items-center justify-center h-full px-4 py-24 text-gray-400 text-3xl font-semibold bg-gray-100 border-2 border-gray-200 border-dashed rounded-md">
-            To be a front end developer<br>To be a cloud engineer</div>
+            class="flex items-center justify-center h-full px-4 py-24 text-gray-200 text-2xl font-semibold bg-blue-800 border-2 border-gray-200  rounded-md">
+            {{ strip_tags(\Illuminate\Foundation\Inspiring::quote()) }}
+          </div>
         </div>
       </div>
       {{-- try to create a footer component --}}
-
-      {{--
     </section>
     <section class="text-right font-semibold text-gray-500">
-      <a href="#" class="text-purple-600 hover:underline">Recreated by Mozia Precious Chibundu &#10083;</a> with <a
-        href="https://tailwindcss.com/" class="text-teal-400 hover:underline">Tailwind CSS</a>
+      <a href="https://github.com/suzt-0" class="text-purple-600 hover:underline">Made by Sujit</a> with
+      <a href="https://laravel.com/" class="text-red-400 hover:underline">Laravel</a> and
+      <a href="https://tailwindcss.com/" class="text-teal-400 hover:underline">Tailwind CSS</a>
 
-    </section> --}}
+    </section>
   </main>
   </div>
 </body>
