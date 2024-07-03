@@ -14,9 +14,15 @@ class Role
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next, string $role): Response
     {
+        
+        if (Auth::check() && in_array(Auth::user()->role, explode('.', $role))) {
+            return $next($request);
+        }
+        // Redirect to login or handle unauthorized access appropriately
+        return redirect()->route('login');
        
-        return $next($request);
+        // return $next($request);
     }
 }
