@@ -12,7 +12,7 @@
   @vite('resources/css/app.css')
 </head>
 
-<body class="bg-gray-200">
+{{-- <body class="bg-gray-200">
   @include('components.navbar-basic')
   <div class="flex-grow text-gray-800">
     <header class="flex items-center h-20 px-6 sm:px-10 bg-white">
@@ -291,6 +291,48 @@
 
       </section>
     </main>
+  </div>
+</body> --}}
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+  <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+    <h2 class="text-2xl font-bold mb-6 text-gray-800">Add New Task</h2>
+    <form action="#" method="POST">
+      <div class="mb-4">
+        <label for="task-name" class="block text-gray-700">Task Name</label>
+        <input type="text" id="task-name" name="task-name" class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400" required>
+      </div>
+      <div class="mb-4">
+        <label for="description" class="block text-gray-700">Description</label>
+        <textarea id="description" name="description" rows="4" class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400" required></textarea>
+      </div>
+      <div class="mb-4">
+        <label for="due-date" class="block text-gray-700">Due Date</label>
+        <input type="date" id="due-date" name="due-date" class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400" required>
+      </div>
+      <div class="mb-4">
+        <label for="priority" class="block text-gray-700">Priority</label>
+        <select id="priority" name="priority" class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">
+          <option value="low" class="p-2">Low</option>
+          <option value="medium" class="p-2">Medium</option>
+          <option value="high" class="p-2">High</option>
+        </select>
+      </div>
+      <div class="mb-4">
+        <label for="assignee" class="block text-gray-700">Assignee</label>
+        <input type="text" id="assignee" name="assignee" class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">
+      </div>
+      <div class="mb-6">
+        <label for="status" class="block text-gray-700">Status</label>
+        <select id="status" name="status" class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">
+          <option value="not-started" class="p-2">Not Started</option>
+          <option value="in-progress" class="p-2">In Progress</option>
+          <option value="completed" class="p-2">Completed</option>
+        </select>
+      </div>
+      <div>
+        <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">Add Task</button>
+      </div>
+    </form>
   </div>
 </body>
 

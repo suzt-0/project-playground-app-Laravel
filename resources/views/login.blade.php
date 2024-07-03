@@ -34,7 +34,7 @@
     {{-- navbar ends here--}}
 
     {{-- Contains main body --}}
-    <div class=" flex min-h-full flex-col justify-start px-6 py-12 lg:px-8">
+    <div class="flex min-h-full flex-col justify-start px-6 py-12 lg:px-8">
         {{-- Sign in text --}}
         <div class="sm:mx-auto sm:w-full sm:max-w-sm ">
             <h2 class=" text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">

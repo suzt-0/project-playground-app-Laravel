@@ -22,12 +22,7 @@
                         <h2 class="text-xl font-bold mb-2">Card Title</h2>
                         <p class="text-gray-600 h-max  overflow-hidden text-ellipsis max-h-12 md:max-h-12 lg:max-h-24">
                             This is a description of the card content. It can be a few sentences
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet tempore id ut quidem
-                            voluptate similique excepturi in? Placeat animi dolor ipsam provident libero. Laboriosam
-                            hic, animi voluptate quo earum vero. Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit. Exercitationem, enim alias. Perspiciatis dolor, illo consequatur aliquam fuga,
-                            doloribus accusantium enim earum similique itaque accusamus hic, sunt fugit deleniti
-                            deserunt facilis?
+                            
                         </p>
                     </div>
                 </div>

@@ -9,45 +9,33 @@
   @vite('resources/css/app.css')
 </head>
 
-<body class="bg-gray-200">
+<body class="bg-slate-200">
   {{-- trying to create a navbar component for dashboard --}}
   <header class="text-gray-700 body-font border-b border-gray-200">
     <div class="container m-1 flex flex-wrap p-5 flex-col md:flex-row items-center">
-
       <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="{{route('home')}}"">
-        {{-- <svg xmlns=" http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
-        stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
-        viewBox="0 0 24 24">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-        </svg> --}}
-        <svg width="70px" height="70px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink" fill="#3949AB">
-          <g id="SVGRepo_bgCarrier" stroke-width=""></g>
-          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <svg width="60px" height="60px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink">
           <g id="SVGRepo_iconCarrier">
-            <title>project-new</title>
-            <g id="Page-1" stroke="none" stroke-width="1" fill="#3949AB" fill-rule="evenodd">
-              <g id="Combined-Shape" fill="currentcolor" transform="translate(64.000000, 34.346667)">
+              <g id="Combined-Shape" fill="#3949AB"   transform="translate(64.000000, 34.346667)">
                 <path
                   d="M192,-7.10542736e-15 L384,110.851252 L384,242.986 L341.333,242.986 L341.333,157.655 L213.333,231.555 L213.333,431.088 L192,443.405007 L0,332.553755 L0,110.851252 L192,-7.10542736e-15 Z M341.333333,264.32 L341.333,328.32 L405.333333,328.32 L405.333333,370.986667 L341.333,370.986 L341.333333,434.986667 L298.666667,434.986667 L298.666,370.986 L234.666667,370.986667 L234.666667,328.32 L298.666,328.32 L298.666667,264.32 L341.333333,264.32 Z M42.666,157.654 L42.6666667,307.920144 L170.666,381.82 L170.666,231.555 L42.666,157.654 Z M192,49.267223 L66.1333333,121.936377 L192,194.605531 L317.866667,121.936377 L192,49.267223 Z">
                 </path>
               </g>
             </g>
-          </g>
         </svg>
         <span class="ml-3 text-gray-700 text-2xl">Project Management System</span>
       </a>
-
       <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center p-1">
         <a href="{{route('home')}}"
-          class="mr-5 p-1 hover:text-gray-900 hover:underline hover:decoration-gray-900 ">Home</a>
-        <a href="#" 
-          class="mr-5 p-1 hover:text-gray-900 hover:underline hover:decoration-gray-900">About</a>
-        <a href="#" 
-          class="mr-5 p-1 hover:text-gray-900 hover:underline hover:decoration-gray-900">Contacts</a>
-        <a href="#" 
-          class="mr-5 p-1 hover:text-gray-900 hover:underline hover:decoration-gray-900">User Manual</a>
-
+          class="mr-4 p-2  hover:text-gray-900 hover:underline hover:decoration-gray-900 ">Home</a>
+        <a href="#"
+          class="mr-4 p-2  hover:text-gray-900 hover:underline hover:decoration-gray-900">About</a>
+        <a href="#"
+          class="mr-4 p-2  hover:text-gray-900 hover:underline hover:decoration-gray-900">Contacts</a>
+        <a href="#"
+          class="mr-4 p-2  hover:text-gray-900 hover:underline hover:decoration-gray-900">User
+          Manual</a>
         <button
           class="relative p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:bg-gray-100 focus:text-gray-600 rounded-full">
           <span class="sr-only">Notifications</span>
@@ -58,7 +46,6 @@
               d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
           </svg>
         </button>
-
         <button
           class="relative p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:bg-gray-100 focus:text-gray-600 rounded-full">
           <span class="sr-only">Log out</span>
@@ -67,7 +54,6 @@
               d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
           </svg>
         </button>
-
       </nav>
     </div>
     {{--Search bar--}}
@@ -82,17 +68,16 @@
       <input type="text" role="search" placeholder="Search..."
         class="py-2 pl-10 pr-4 w-full border-4 border-transparent placeholder-gray-400 focus:bg-gray-50 rounded-lg" />
     </div>
-  </header> --}}
-
+    --}}
+  </header>
   {{-- navbar ends here --}}
-
   <main class="  sm:p-10 space-y-4">
     <div class="flex flex-col space-y-4 md:space-y-0 md:flex-row justify-between">
       <div class="mr-6">
-        <h1 class="text-5xl text-gray-700 font-semibold mb-1.5">Sujit Bhattarai</h1>
+        <h1 class="text-5xl text-gray-700 font-semibold mb-1.5 m-2">Username</h1>
         {{-- <h2 class=" text-2xl text-gray-900 font-semibold ml-2">Sujit Bhattarai</h2> --}}
       </div>
-      <div class="flex flex-wrap items-start justify-end -mb-3 mx-4  ">
+      <div class="flex flex-wrap items-start -mb-3 mx-4 md:justify-center md:align-middle lg:justify-end ">
         <button
           class="inline-flex px-5 py-3 text-indigo-600 hover:text-indigo-700 focus:text-indigo-700 hover:bg-indigo-100 focus:bg-indigo-100 border border-indigo-600 rounded-md mb-3">
           <svg aria-hidden="true" fill="none" viewbox="0 0 24 24" stroke="currentColor"
@@ -367,13 +352,12 @@
           </div>
         </div>
       </div>
-      {{-- try to create a footer component --}}
     </section>
+      {{-- try to create a footer component --}}
     <section class="text-right font-semibold text-gray-500">
       <a href="https://github.com/suzt-0" class="text-purple-600 hover:underline">Made by Sujit</a> with
       <a href="https://laravel.com/" class="text-red-400 hover:underline">Laravel</a> and
       <a href="https://tailwindcss.com/" class="text-teal-400 hover:underline">Tailwind CSS</a>
-
     </section>
   </main>
   </div>

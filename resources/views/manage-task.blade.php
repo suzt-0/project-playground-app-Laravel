@@ -11,17 +11,17 @@
 
 <body>
     {{-- navbar starts here --}}
-    @include('components.navbar-basic')
+    @include('components.navbar')
     {{-- navbar ends here --}}
 
 
     <main class="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 p-4 md:gap-8 md:p-10">
-        <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">
+        <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight hidden md:block">
             {{-- <a href="{{route('comments.show', $task->comment->id)}}">Dashboard</a>/ --}}
-            <a href="{{route('dashboard')}}">Dashboard</a>/
-            <a href="">My Projects</a>/
-            <a href="">{Project-name}</a>/
-            <a href="">Tasks</a>/..
+            <a href="{{route('dashboard')}}">Dashboard/</a>
+            <a href="">My Projects/</a>
+            <a href="">{Project-name}/</a>
+            <a href="">Tasks/...</a>
         </h3>
 
         <div class="rounded-lg bg-slate-50 max-w-6xl w-full mx-auto flex flex-col gap-8">
@@ -38,9 +38,9 @@
 
                         <a href="{{route('create-task')}}"
                             class="border border-slate-300 bg-slate-200 hover:bg-slate-700 hover:text-slate-200  inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium  focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="w-4 h-4 mr-2">
                                 <path d="M5 12h14"></path>
                                 <path d="M12 5v14"></path>
                             </svg>
@@ -53,15 +53,17 @@
                         $example=1;
                         echo
                         '
-                        
-                         <div class="rounded-lg border-2 shadow-lg cursor-pointer hover:bg-slate-800 hover:text-slate-50">
+
+                        <div
+                            class="rounded-lg border-2 shadow-lg cursor-pointer hover:bg-slate-800 hover:text-slate-50">
                             <div class="flex flex-col space-y-1.5 p-6">
                                 <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">
                                     Task name
                                 </h3>
                                 <div class="flex items-center gap-2">
-                                    <div class="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
-                                      Task Status
+                                    <div
+                                        class="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
+                                        Task Status
                                     </div>
                                     <div class="text-sm">
                                         Due date: duedate
@@ -69,33 +71,15 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         '
                         ;
                         @endphp
 
-                       <!-- <div class="rounded-lg border-2 shadow-lg cursor-pointer hover:bg-slate-800 hover:text-slate-50">
-                            <div class="flex flex-col space-y-1.5 p-6">
-                                <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">
-                                    Task name
-                                </h3>
-                                <div class="flex items-center gap-2">
-                                    {{-- Task status --}}
-                                    <div class="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
-                                      Task Status
-                                    </div>
-                                    {{-- Task Due-date--}}
-                                    <div class="text-sm">
-                                        Due date: duedate
-                                    </div>
-                                </div>
-                            </div> 
-                        -->
-                        </div>
-                       
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </main>
 </body>
