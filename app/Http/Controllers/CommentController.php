@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class CommentController extends Controller
 {
@@ -12,7 +14,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        // do we need it?
+
     }
 
     /**
@@ -20,7 +23,8 @@ class CommentController extends Controller
      */
     public function create()
     {
-        //
+
+        // return view('');
     }
 
     /**
@@ -28,7 +32,10 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'comment_text' => 'required|string',
+            'comment_type' => ['required', Rule::in(['issues', 'suggestions'])],
+        ]);
     }
 
     /**
