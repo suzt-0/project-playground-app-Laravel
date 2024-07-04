@@ -13,6 +13,7 @@ class Task extends Model
     public function project() :BelongsTo{
         return $this->belongsTo(Project::class, 'project_id','id');
     }
+    
     public function comment() :HasMany{
         return $this->hasMany(Comment::class, 'task_id','id');
     }
