@@ -11,7 +11,6 @@
 </head>
 
 <body>
-  {{-- trying to create a navbar component for dashboard --}}
 
   @include('components.navbar')
   {{-- navbar ends here --}}
@@ -19,10 +18,12 @@
   <main class=" p-5 space-y-4">
     <div class="flex flex-col space-y-4 md:space-y-0 md:flex-row justify-between">
       <div class="mr-6">
-        <h1 class="text-5xl text-gray-900 font-semibold mb-1.5">{{ Auth::user()->name}}</h1>
+        {{-- <h1 class="text-5xl text-gray-900 font-semibold mb-1.5">{{ Auth::user()->name}}</h1> --}}
+        <h1 class="text-5xl text-gray-900 font-semibold mb-1.5">{{ $user->name }}</h1>
       </div>
       <div class="flex flex-wrap items-start justify-end -mb-3">
-        <button
+        <a
+        href="{{route('create-project')}}"
           class="inline-flex px-5 py-3 text-slate-600 hover:bg-slate-600 hover:text-slate-200 border border-slate-600 hover:scale-105 rounded-md mb-3">
           <svg aria-hidden="true" fill="none" viewbox="0 0 24 24" stroke="currentColor"
             class="flex-shrink-0 h-5 w-5 -ml-1 mt-0.5 mr-2">
@@ -30,10 +31,10 @@
               d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
           </svg>
           Join Existing Project
-        </button>
+        </a>
         <a
           href="{{route('create-project')}}"
-          class="inline-flex px-5 py-3 text-slate-50 bg-slate-600 hover:bg-slate-200 hover:text-slate-600 border border-slate-600 hover:scale-105 rounded-md ml-6 mb-3">
+          class="inline-flex px-5 py-3 text-slate-50 bg-slate-600 hover:bg-inherit hover:text-slate-600 border border-slate-600 hover:scale-105 rounded-md ml-6 mb-3">
           <svg aria-hidden="true" fill="none" viewbox="0 0 24 24" stroke="currentColor"
             class="flex-shrink-0 h-6 w-6 text-inherit -ml-1 mr-2">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
@@ -45,8 +46,8 @@
     <section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
       {{-- My projects  --}}
       <a href="{{route('my-projects')}}">
-        <div class="flex items-center p-8 bg-slate-200 shadow rounded-lg">
-          <div
+        <div class="flex items-center p-8 bg-slate-300 hover:bg-slate-200 border border-slate-200 hover:border hover:border-slate-700 rounded-lg">
+        <div
             class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-slate-600 bg-slate-100 rounded-full mr-6">
             <svg aria-hidden="true" fill="none" viewbox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
               <circle xmlns="http://www.w3.org/2000/svg" cx="12" cy="7" r="4" stroke-width="2" stroke-linecap="round" />
@@ -56,7 +57,7 @@
             </svg>
           </div>
           <div>
-            <span class="block text-2xl font-bold">22</span>
+            <span class="block text-2xl font-bold">{{ $myProject }}</span>
             <span class="block text-gray-600">My Projects</span>
           </div>
         </div>
@@ -64,7 +65,7 @@
 
       {{-- Join Projetcs  --}}
       <a href="{{route('my-projects')}}">
-        <div class="flex items-center p-8 bg-slate-200 shadow rounded-lg">
+        <div class="flex items-center p-8 bg-slate-300 hover:bg-slate-200 border border-slate-200 hover:border hover:border-slate-700  rounded-lg">
           <div
             class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-slate-600 bg-slate-100 rounded-full mr-6">
             <svg aria-hidden="true" fill="none" viewbox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
@@ -73,7 +74,7 @@
             </svg>
           </div>
           <div>
-            <span class="block text-2xl font-bold">20</span>
+            <span class="block text-2xl font-bold">{{$joinedProject}}</span>
             <span class="block text-gray-500">Joined Projects</span>
           </div>
         </div>
@@ -81,7 +82,7 @@
 
       {{-- Completed Projects  --}}
       <a href="{{route('my-projects')}}">
-        <div class="flex items-center p-8 bg-slate-200 shadow rounded-lg">
+        <div class="flex items-center p-8 bg-slate-300 hover:bg-slate-200 border border-slate-200 hover:border hover:border-slate-700 rounded-lg">
           <div
             class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-slate-600 bg-slate-100 rounded-full mr-6">
             <svg width="50px" height="50px" viewBox="0 -0.5 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -91,7 +92,7 @@
   
           </div>
           <div>
-            <span class="block text-2xl font-bold">30</span>
+            <span class="block text-2xl font-bold">{{$completedProject}}</span>
             <span class="block text-gray-500">Completed Projects</span>
           </div>
         </div>
@@ -99,7 +100,7 @@
 
       {{-- Failed Projects --}}
       <a href="{{route('my-projects')}}">
-        <div class="flex items-center p-8 bg-slate-200 shadow rounded-lg">
+        <div class="flex items-center p-8 bg-slate-300 hover:bg-slate-200 border border-slate-200 hover:border hover:border-slate-700 rounded-lg">
           <div
             class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-slate-600 bg-slate-100 rounded-full mr-6">
             <svg width="50px" height="50px" fill="currentColor" stroke="currentColor" viewBox="0 0 48 48"
@@ -110,7 +111,7 @@
   
           </div>
           <div>
-            <span class="block text-2xl font-bold">10</span>
+            <span class="block text-2xl font-bold">{{$failedProject}}</span>
             <span class="block text-gray-500">Failed Projects</span>
           </div>
         </div>
@@ -122,25 +123,14 @@
       <div class="row-span-3 col-span-2  bg-white shadow rounded-lg">
         <div class="flex items-center justify-between px-6 py-5 font-semibold border-b border-gray-100">
           <span>Tasks to do</span>
-          {{-- <button type="button"
-            class="inline-flex justify-center rounded-md px-1 -mr-1 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-600"
-            id="options-menu" aria-haspopup="true" aria-expanded="true">
-            Descending
-            <svg class="-mr-1 ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clip-rule="evenodd" />
-            </svg>
-          </button> --}}
-          <!-- Refer here for full dropdown menu code: https://tailwindui.com/components/application-ui/elements/dropdowns -->
-
+         
 
         </div>
         <div class="grid gap-4 mx-1 py-3 h-fit cursor-all-scroll">
           @php
           $a =2;
           @endphp
-          @while ($a <= 20) 
+          @while ($a <= 2) 
      
               <a href="{{route("view-task")}}">
             <div
