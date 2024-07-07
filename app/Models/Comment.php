@@ -9,6 +9,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Comment extends Model
 {
     use HasFactory;
+    // fillable
+    // guarded
+    protected $guarded=[
+        'id',
+        'created_at',
+        'updated_at',
+    ];
     public function task() :BelongsTo{
         return $this->belongsTo(Task::class, 'task_id','id');
     }
