@@ -64,6 +64,11 @@
                         <input id="password" name="password" type="password" autocomplete="current-password" required
                             class="block w-full rounded-md border-0 py-2 px-3  text-gray-900 shadow-sm ring-1 ring-inset ring-indigo-400 placeholder:text-gray-400 focus:outline-indigo-600 focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
+                    <div class="mt-2 flex items-center gap-1">
+                        <input  type="checkbox" id="remember_me" name="remember_me"
+                            class="px-3  text-gray-900 shadow-sm ring-1 ring-inset ring-indigo-400 placeholder:text-gray-400 focus:outline-indigo-600 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            <label for="remember_me">Remember me</label>
+                    </div>
                 </div>
 
                 <div>
