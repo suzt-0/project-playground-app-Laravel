@@ -14,21 +14,35 @@ Route::get('/', function () {
 })->name('home');
 
 
-// routes defined for register function
-Route::get('/register', [UserController::class, 'create'])->name('register');
-Route::post('/register',[UserController::class, 'store'])->name('register');
+//grouped middleware for guest users
+Route::middleware('guest')->group(function () {
 
-// routes defined for login function
-Route::get('/login', [UserController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [UserController::class, 'login'])->name('login');
-//routes defined for authenticated access to browser
-// Route::get('/dashboard', [UserController::class, 'dashboardPage'])->name('dashboard');
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+    // routes defined for register function
+    Route::get('/register', [UserController::class, 'create'])->name('register');
+    Route::post('/register',[UserController::class, 'store'])->name('register');
+
+    // routes defined for login function
+    Route::get('/login', [UserController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [UserController::class, 'login'])->name('login');
+
+});
+//grouped middleware for authenticated users
+Route::middleware('auth')->group(function () {
+
+    Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+
+    //routes defined for authenticated access to browser
+
+    // Route::get('/dashboard', [UserController::class, 'dashboardPage'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/my-project', [ProjectController::class, 'index'])->name('my-project');
 
 
+    Route::resource('projects', ProjectController::class);
 
+    Route::resource('tasks', TaskController::class);
 
-
+});
 
 // test routes
 
@@ -65,9 +79,9 @@ Route::get('/task', function(){
     return view('task');
 })->name('task');
 
-Route::get('/my-projects', function(){
-    return view('my-projects');
-})->name('my-projects');
+// Route::get('/my-projects', function(){
+//     return view('my-projects');
+// })->name('my-projects');
  
 Route::get('/join-projects', function(){
     return view('join-projects');
