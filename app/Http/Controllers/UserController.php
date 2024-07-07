@@ -38,7 +38,6 @@ class UserController extends Controller
             'name' => 'required|string',
             'email' => 'required|string',
             'password' => 'required|string|confirmed',
-            
         ]);
             $user = User::create($data);
 
@@ -59,52 +58,14 @@ class UserController extends Controller
     }
 
 
-    // Defining logic for Login Function
-
-    // Show login form
-    public function showLoginForm()
-    {
-        return view('login');
-    }
-
-    //Authentication of login info
-
-    public function login(Request $request)
-    {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-
-        // $credentials = $request->only('email', 'password');
-
-        if (Auth::attempt($credentials)) {
-            // $request->session()->regenerate();
-
-            return redirect()->route('dashboard');
-        }
-
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
-    }
-
-    public function dashboardPage(){
-        if(Auth::check()){
-            return view('dashboard');
-        }
-        else{
-            return redirect()->route('login');
-        }
-    }
-
+    
 
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        //
+        // return view('show.user', compact(''))
     }
 
     /**
@@ -129,5 +90,51 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    // Defining logic for Login Function
+
+    // Show login form
+    public function showLoginForm()
+    {
+        return view('login');
+    }
+
+    //Authentication of login info
+
+    public function login(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        // $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials, $request->remember_me)) {
+            // $request->session()->regenerate();
+
+            return redirect()->route('dashboard');
+        }
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
+    }
+
+
+    public function logout() {
+        Auth::logout();
+        return redirect()->route('login');
+    }
+
+
+    public function dashboardPage(){
+        if(Auth::check()){
+            return view('dashboard');
+        }
+        else{
+            return redirect()->route('login');
+        }
     }
 }
