@@ -12,7 +12,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        return view('tasks');
     }
 
     /**
@@ -20,7 +20,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view('create-task');
     }
 
     /**
@@ -28,7 +28,7 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $validation
     }
 
     /**
@@ -36,7 +36,7 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        //
+        // return view('show.task', compact('task'));
     }
 
     /**
@@ -60,6 +60,7 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        $task->delete();
+        return redirect()->route('tasks.index')->with('deleted', 'data is deleted');//can be sent with message 
     }
 }
