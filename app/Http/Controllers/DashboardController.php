@@ -13,12 +13,15 @@ class DashboardController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $myProject = $user->project()->count();
-        $completedProject = $user->project()->whereStatus('Completed')->count();
-        $failedProject = $user->project()->whereStatus('Dropped')->count();
-        // need modification
-        $joinedProject = $user->project()->count();
-        return view('dashboard', compact('user', 'myProject','joinedProject','completedProject','failedProject'));
+        
+      
+            $myProject = $user->myProject()->count();
+            $completedProject = $user->myProject()->whereStatus('Completed')->count();
+            $failedProject = $user->myProject()->whereStatus('Dropped')->count();
+            $joinedProject = $user->joinedProject()->count();
+            $tasks = $user->tasks;
+
+        return view('dashboard', compact('user', 'myProject','joinedProject','completedProject','failedProject','tasks'));
 
         // $project = $user->projects()->get();
         // return view('dashboard', compact('user', 'projectCount','project'));
