@@ -44,19 +44,31 @@
                 </h1>
                 <h2><q class="mb-8 leading-relaxed max-w-fit ">Manage your Projects more efficiently with Project Management System</q></h2>
                 <div class="mt-4 flex justify-center">
+                    @auth
+
+                    <a href="{{route('dashboard')}}">
+                        <button
+                        class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 rounded text-lg focus:outline-none hover:bg-indigo-600">
+                        Dashboard
+                    </button>
+                </a>
+
+                    @else
+                        
                     <a href="{{route('register')}}">
                         <button
-                            class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 rounded text-lg focus:outline-none hover:bg-indigo-600">
-                            Register
-                        </button>
-                    </a>
-
-                    <a href="{{route('login')}}">
-                        <button
-                            class="ml-4 inline-flex text-gray-800 bg-gray-300 border-0 py-2 px-6 rounded text-lg focus:outline-none hover:bg-gray-400 hover:text-gray-900">
-                            Login
-                        </button>
-                    </a>
+                        class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 rounded text-lg focus:outline-none hover:bg-indigo-600">
+                        Register
+                    </button>
+                </a>
+                
+                <a href="{{route('login')}}">
+                    <button
+                    class="ml-4 inline-flex text-gray-800 bg-gray-300 border-0 py-2 px-6 rounded text-lg focus:outline-none hover:bg-gray-400 hover:text-gray-900">
+                    Login
+                </button>
+            </a>
+            @endauth
 
                 </div>
             </div>
