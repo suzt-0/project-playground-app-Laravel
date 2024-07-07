@@ -19,11 +19,10 @@
     <div class="flex flex-col space-y-4 md:space-y-0 md:flex-row justify-between">
       <div class="mr-6">
         {{-- <h1 class="text-5xl text-gray-900 font-semibold mb-1.5">{{ Auth::user()->name}}</h1> --}}
-        <h1 class="text-5xl text-gray-900 font-semibold mb-1.5">{{ $user->name }}</h1>
+        <h1 class="text-5xl text-gray-900 font-semibold mb-1.5">{{ Auth::user()->name }}</h1>
       </div>
       <div class="flex flex-wrap items-start justify-end -mb-3">
-        <a
-        href="{{route('create-project')}}"
+        <a href="{{route('create-project')}}"
           class="inline-flex px-5 py-3 text-slate-600 hover:bg-slate-600 hover:text-slate-200 border border-slate-600 hover:scale-105 rounded-md mb-3">
           <svg aria-hidden="true" fill="none" viewbox="0 0 24 24" stroke="currentColor"
             class="flex-shrink-0 h-5 w-5 -ml-1 mt-0.5 mr-2">
@@ -32,8 +31,7 @@
           </svg>
           Join Existing Project
         </a>
-        <a
-          href="{{route('create-project')}}"
+        <a href="{{route('create-project')}}"
           class="inline-flex px-5 py-3 text-slate-50 bg-slate-600 hover:bg-inherit hover:text-slate-600 border border-slate-600 hover:scale-105 rounded-md ml-6 mb-3">
           <svg aria-hidden="true" fill="none" viewbox="0 0 24 24" stroke="currentColor"
             class="flex-shrink-0 h-6 w-6 text-inherit -ml-1 mr-2">
@@ -44,10 +42,11 @@
       </div>
     </div>
     <section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
-      {{-- My projects  --}}
-      <a href="{{route('my-projects')}}">
-        <div class="flex items-center p-8 bg-slate-300 hover:bg-slate-200 border border-slate-200 hover:border hover:border-slate-700 rounded-lg">
+      {{-- My projects --}}
+      <a href="{{route('my-project')}}">
         <div
+          class="flex items-center p-8 bg-slate-300 hover:bg-slate-200 border border-slate-200 hover:border hover:border-slate-700 rounded-lg">
+          <div
             class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-slate-600 bg-slate-100 rounded-full mr-6">
             <svg aria-hidden="true" fill="none" viewbox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
               <circle xmlns="http://www.w3.org/2000/svg" cx="12" cy="7" r="4" stroke-width="2" stroke-linecap="round" />
@@ -63,9 +62,10 @@
         </div>
       </a>
 
-      {{-- Join Projetcs  --}}
+      {{-- Join Projetcs --}}
       <a href="{{route('my-projects')}}">
-        <div class="flex items-center p-8 bg-slate-300 hover:bg-slate-200 border border-slate-200 hover:border hover:border-slate-700  rounded-lg">
+        <div
+          class="flex items-center p-8 bg-slate-300 hover:bg-slate-200 border border-slate-200 hover:border hover:border-slate-700  rounded-lg">
           <div
             class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-slate-600 bg-slate-100 rounded-full mr-6">
             <svg aria-hidden="true" fill="none" viewbox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
@@ -80,16 +80,17 @@
         </div>
       </a>
 
-      {{-- Completed Projects  --}}
+      {{-- Completed Projects --}}
       <a href="{{route('my-projects')}}">
-        <div class="flex items-center p-8 bg-slate-300 hover:bg-slate-200 border border-slate-200 hover:border hover:border-slate-700 rounded-lg">
+        <div
+          class="flex items-center p-8 bg-slate-300 hover:bg-slate-200 border border-slate-200 hover:border hover:border-slate-700 rounded-lg">
           <div
             class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-slate-600 bg-slate-100 rounded-full mr-6">
             <svg width="50px" height="50px" viewBox="0 -0.5 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M5.5 12.5L10.167 17L19.5 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round" />
             </svg>
-  
+
           </div>
           <div>
             <span class="block text-2xl font-bold">{{$completedProject}}</span>
@@ -100,7 +101,8 @@
 
       {{-- Failed Projects --}}
       <a href="{{route('my-projects')}}">
-        <div class="flex items-center p-8 bg-slate-300 hover:bg-slate-200 border border-slate-200 hover:border hover:border-slate-700 rounded-lg">
+        <div
+          class="flex items-center p-8 bg-slate-300 hover:bg-slate-200 border border-slate-200 hover:border hover:border-slate-700 rounded-lg">
           <div
             class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-slate-600 bg-slate-100 rounded-full mr-6">
             <svg width="50px" height="50px" fill="currentColor" stroke="currentColor" viewBox="0 0 48 48"
@@ -108,7 +110,7 @@
               <path
                 d="M26.8,24l5.6-5.6a2,2,0,0,0-2.8-2.8L24,21.2l-5.6-5.6a2,2,0,0,0-2.8,2.8L21.2,24l-5.6,5.6a1.9,1.9,0,0,0,0,2.8,1.9,1.9,0,0,0,2.8,0L24,26.8l5.6,5.6a1.9,1.9,0,0,0,2.8,0,1.9,1.9,0,0,0,0-2.8Z" />
             </svg>
-  
+
           </div>
           <div>
             <span class="block text-2xl font-bold">{{$failedProject}}</span>
@@ -123,40 +125,37 @@
       <div class="row-span-3 col-span-2  bg-white shadow rounded-lg">
         <div class="flex items-center justify-between px-6 py-5 font-semibold border-b border-gray-100">
           <span>Tasks to do</span>
-         
+
 
         </div>
         <div class="grid gap-4 mx-1 py-3 h-fit cursor-all-scroll">
-          @php
-          $a =2;
-          @endphp
-          @while ($a <= 2) 
-     
-              <a href="{{route("view-task")}}">
-            <div
-              class="rounded-lg  border-2 shadow-lg cursor-pointer text-slate-700 hover:text-slate-800 hover:border-slate-500 hover:bg-slate-50">
-              <div class="flex flex-col space-y-1 p-6">
-                <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">
-                  Task name
-                </h3>
-                <div class="flex items-center gap-2">
-                  <div
-                    class="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
-                    Task Status
-                  </div>
-                  <div class="text-sm">
-                    Due date: {data} days left
-                  </div>
-                </div>
-              </div>
-          </div>
-          </a>
-          @php
-           $a++; 
-           @endphp
+         
+          @foreach ($tasks as $task)
 
-           @endwhile
-          <a href="{{route("view-task")}}">
+          {{-- <a href="{{route(" view-task")}}"> --}}
+          <a href="">
+            <div
+              class="rounded-lg  border-2 shadow-lg cursor-pointer text-slate-700 hover:text-slate-800 hover:border-slate-500 hover:bg-slate-50">
+              <div class="flex flex-col space-y-1 p-6">
+                <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">
+                  {{ $task->name }}
+                </h3>
+                <div class="flex items-center gap-2">
+                  <div
+                    class="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
+                    {{ $task->priority }}
+                  </div>
+                  <div class="text-sm">
+                    Due date: {{ $task->due_date }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+          @endforeach
+
+          {{-- <a href="{{route(" view-task")}}"> --}}
+          {{-- <a href="">
             <div
               class="rounded-lg  border-2 shadow-lg cursor-pointer text-slate-700 hover:text-slate-800 hover:border-slate-500 hover:bg-slate-50">
               <div class="flex flex-col space-y-1 p-6">
@@ -173,9 +172,9 @@
                   </div>
                 </div>
               </div>
-          </div>
-          </a>
-      </div>
+            </div>
+          </a> --}}
+        </div>
       </div>
       {{-- Quote card --}}
       <div class=" row-span-3 col-span-1 md:col-span-2 ">
