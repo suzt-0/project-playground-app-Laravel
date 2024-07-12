@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class TaskController extends Controller
 {
@@ -15,12 +18,33 @@ class TaskController extends Controller
         return view('tasks');
     }
 
+    public function setProjectId(Request $request)
+    {
+        $project_id = $request->input('project_id');
+        session(['project_id' => $project_id]);
+        return redirect()->route('tasks.create');
+    }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('create-task');
+        $project_id = session('project_id');
+
+        if (!$project_id) {
+            return redirect()->route('projects.index')->with('error', 'No project selected.');
+        }
+        try{     
+            $project = Project::findOrFail($project_id);
+            $members = $project->users;
+            //send members data from create
+            return view('create-task',compact('project_id','members'));
+        }catch (\Exception $e) {
+            // Handle other exceptions or errors
+            return redirect()->route('projects.index')->with('error', 'Failed to fetch project details.');
+        }
+
     }
 
     /**
@@ -28,7 +52,47 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        // $validation
+        // Validate the request data
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'start_date' => 'required|date',
+            'due_date' => 'date|after_or_equal:start_date',
+            'priority' => 'required|string|in:low,medium,high,urgent',
+            'status' => 'required|string|in:Not Assigned,Assigned,Ongoing,Completed',
+            'user_id'=> 'required|exists:users,id',
+            'project_id'=> 'required|exists:projects,id',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        try {
+
+            // Create the project
+            $task = new Task();
+            $task->name = $request->name;
+            $task->description = $request->description;
+            $task->start_date = $request->start_date;
+            $task->due_date = $request->due_date;
+            $task->priority = $request->priority;
+            $task->status = $request->status;
+            $task->user_id = $request->user_id;
+            $task->project_id = $request->project_id;
+
+            // add project id here
+            
+            $task->save();
+            session()->forget('project_id');
+            // Handle successful creation
+            return redirect()->route('project.index')->with('success', 'Task created successfully!');
+        } catch (\Exception $e) {
+
+            // Handle failure
+            return redirect()->back()->with('error', 'Failed to create task: ' . $e->getMessage())->withInput();
+        }
+
     }
 
     /**
@@ -36,7 +100,7 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        // return view('show.task', compact('task'));
+        return view('show.task', compact('task'));
     }
 
     /**
@@ -44,7 +108,7 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        //
+        //   return edit view
     }
 
     /**
@@ -52,7 +116,9 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        //samee as store but remove unnecessary parts susch as 
+        // "$user=Auth::user();
+        // $task = new Task();"
     }
 
     /**
