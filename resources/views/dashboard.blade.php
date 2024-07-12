@@ -19,10 +19,10 @@
     <div class="flex flex-col space-y-4 md:space-y-0 md:flex-row justify-between">
       <div class="mr-6">
         {{-- <h1 class="text-5xl text-gray-900 font-semibold mb-1.5">{{ Auth::user()->name}}</h1> --}}
-        <h1 class="text-5xl text-gray-900 font-semibold mb-1.5">{{ Auth::user()->name }}</h1>
+        <h1 class="text-5xl first-letter:capitalize text-gray-900 font-semibold mb-1.5">{{ Auth::user()->name }}</h1>
       </div>
       <div class="flex flex-wrap items-start justify-end -mb-3">
-        <a href="{{route('create-project')}}"
+        <a href="{{route('joinProjects.create')}}"
           class="inline-flex px-5 py-3 text-slate-600 hover:bg-slate-600 hover:text-slate-200 border border-slate-600 hover:scale-105 rounded-md mb-3">
           <svg aria-hidden="true" fill="none" viewbox="0 0 24 24" stroke="currentColor"
             class="flex-shrink-0 h-5 w-5 -ml-1 mt-0.5 mr-2">
@@ -31,7 +31,7 @@
           </svg>
           Join Existing Project
         </a>
-        <a href="{{route('create-project')}}"
+        <a href="{{route('projects.create')}}"
           class="inline-flex px-5 py-3 text-slate-50 bg-slate-600 hover:bg-inherit hover:text-slate-600 border border-slate-600 hover:scale-105 rounded-md ml-6 mb-3">
           <svg aria-hidden="true" fill="none" viewbox="0 0 24 24" stroke="currentColor"
             class="flex-shrink-0 h-6 w-6 text-inherit -ml-1 mr-2">
@@ -43,7 +43,7 @@
     </div>
     <section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
       {{-- My projects --}}
-      <a href="{{route('my-project')}}">
+      <a href="{{route('projects.index')}}">
         <div
           class="flex items-center p-8 bg-slate-300 hover:bg-slate-200 border border-slate-200 hover:border hover:border-slate-700 rounded-lg">
           <div
@@ -63,7 +63,7 @@
       </a>
 
       {{-- Join Projetcs --}}
-      <a href="{{route('my-projects')}}">
+      <a href="{{route('projects.joined')}}">
         <div
           class="flex items-center p-8 bg-slate-300 hover:bg-slate-200 border border-slate-200 hover:border hover:border-slate-700  rounded-lg">
           <div
@@ -81,7 +81,7 @@
       </a>
 
       {{-- Completed Projects --}}
-      <a href="{{route('my-projects')}}">
+      <a href="{{route('projects.completed')}}">
         <div
           class="flex items-center p-8 bg-slate-300 hover:bg-slate-200 border border-slate-200 hover:border hover:border-slate-700 rounded-lg">
           <div
@@ -100,7 +100,7 @@
       </a>
 
       {{-- Failed Projects --}}
-      <a href="{{route('my-projects')}}">
+      <a href="{{route('projects.failed')}}">
         <div
           class="flex items-center p-8 bg-slate-300 hover:bg-slate-200 border border-slate-200 hover:border hover:border-slate-700 rounded-lg">
           <div
