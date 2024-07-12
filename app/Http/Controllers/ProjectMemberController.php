@@ -72,7 +72,7 @@ class ProjectMemberController extends Controller
      */
     public function show(ProjectMember $projectMember)
     {
-        //
+        return view('projectMembers-show',compact('projectMember'));
     }
 
     /**
@@ -96,6 +96,6 @@ class ProjectMemberController extends Controller
      */
     public function destroy(ProjectMember $projectMember)
     {
-        //
+        $projectMember->delete();
     }
 }
