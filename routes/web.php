@@ -35,11 +35,17 @@ Route::middleware('auth')->group(function () {
 
     // Route::get('/dashboard', [UserController::class, 'dashboardPage'])->name('dashboard');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/my-project', [ProjectController::class, 'index'])->name('my-project');
-
+    // Route::get('/my-projects', [ProjectController::class, 'index'])->name('my-projects');
+    // Route::post('/create-project', [ProjectController::class, 'store'])->name('create-project');
+    Route::get('/joined/projects', [ProjectController::class, 'joined'])->name('projects.joined');
+    Route::get('/Completed/projects', [ProjectController::class, 'completed'])->name('projects.completed');
+    Route::get('/failed/projects', [ProjectController::class, 'failed'])->name('projects.failed');
+    
+    Route::post('tasks/setProjectId', [TaskController::class, 'setProjectId'])->name('tasks.setProjectId');
+    Route::get('/tasks/create/{project_id}', [TaskController::class, 'create'])->name('tasks.create');
 
     Route::resource('projects', ProjectController::class);
-
+    Route::resource('joinProjects', ProjectMemberController::class);
     Route::resource('tasks', TaskController::class);
 
 });
@@ -63,9 +69,9 @@ Route::get('/user-manual', function(){
     return view('user-manual');
 })->name('user-manual');
 
-Route::get('/project', function(){
-    return view('project');
-})->name('project');
+// Route::get('/project', function(){
+//     return view('project');
+// })->name('project');
 
 Route::get('/project_admin', function(){
     return view('project_admin');
@@ -87,9 +93,9 @@ Route::get('/join-projects', function(){
     return view('join-projects');
 })->name('join-projects');
  
-Route::get('/create-project', function(){
-    return view('create-project');
-})->name('create-project');
+// Route::get('/create-project', function(){
+//     return view('create-project');
+// })->name('create-project');
  
 Route::get('/create-task', function(){
     return view('create-task');
@@ -106,6 +112,10 @@ Route::get('/manage-task', function(){
 Route::get('/view-task', function(){
     return view('view-task');
 })->name('view-task');
+
+Route::get('/Extra', function(){
+    return view('components.Extra-parts');
+})->name('Extra');
 
 // test routes end
 
