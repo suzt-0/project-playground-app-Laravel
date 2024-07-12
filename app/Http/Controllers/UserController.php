@@ -129,12 +129,12 @@ class UserController extends Controller
     }
 
 
-    public function dashboardPage(){
-        if(Auth::check()){
-            return view('dashboard');
-        }
-        else{
-            return redirect()->route('login');
-        }
-    }
+    // public function dashboardPage(){
+    //     if(Auth::check()){
+    //         return view('dashboard');
+    //     }
+    //     else{
+    //         return redirect()->route('login');
+    //     }
+    // }
 }
