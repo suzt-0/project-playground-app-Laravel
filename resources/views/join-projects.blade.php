@@ -5,126 +5,100 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>My projects</title>
+    <title>Join Project</title>
     @vite('resources/css/app.css')
 </head>
 
-<body>
-    {{-- navbar starts here --}}
-    @include('components.navbar-basic')
-    {{-- navbar ends here --}}
-    
-    <div class="m-4 p-4 rounded-lg bg-slate-200 border-slate-400 shadow-lg">
-        <div class="flex justify-between">
-            <h2 class="text-2xl font-bold mb-5 md:mb-10 lg:mb-20">Joined projects</h2>
-
-            <a href="#"
-                class="border border-slate-700 text-slate-400 bg-slate-700 hover:bg-slate-200 hover:text-slate-700  inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium  focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+<body class="bg-slate-100">
+    {{-- navbar starts --}}
+    @include('components.navbar')
+    {{-- navbar ends --}}
+    @if ($errors->any())
+    <div class="alert alert-danger">
+      <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+    @endif
+    @if (session('error'))
+    <div class="alert alert-danger">
+      {{ session('error') }}
+    </div>
+    @endif
+  
+    @if (session('success'))
+    <div class="alert alert-success">
+      {{ session('success') }}
+    </div>
+    @endif
+  
+    <div class=" flex flex-col w-full min-h-screen">
+      <main class="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 p-4 md:gap-8 md:p-10">
+        <div class="rounded-lg bg-slate-50 max-w-6xl w-full mx-auto flex flex-col gap-8">
+          <div class="shadow-slate-600 focus-within:shadow-slate-900 shadow-2xl rounded-lg border">
+            <div class="space-y-1.5 p-6 flex flex-row items-center justify-between">
+              <div class="space-y-1">
+                <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">Join Project</h3>
+                <p class="text-sm text-muted-foreground">Fill out the form to join a already made project.</p>
+              </div>
+            </div>
+            <form
+            action="{{route('joinProjects.store')}}" method="POST">
+            @csrf
+              <div class="p-6 grid gap-4">
+                <div class="grid md:grid-cols-1 gap-4">
+                  {{-- Project name --}}
+                  <div class="grid gap-2">
+                    <label
+                      class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      for="name">
+                      Project name
+                    </label>
+                    <input
+                      class="flex w-full rounded-md border border-slate-400 focus:ring-offset-slate-600 hover:placeholder-slate-700 px-3 py-2 text-sm"
+                      id="-name" name="name" placeholder="Enter Project Name" />
+                  </div>
+                  {{-- Project ID --}}
+                  <div class="grid gap-2">
+                    <label
+                      class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      for="project_id">
+                      Project ID
+                    </label>
+                    <input type="text"
+                      class="flex w-full rounded-md border border-slate-400 focus:ring-offset-slate-600 hover:placeholder-slate-700 px-3 py-2 text-sm "
+                      id="project_id" name="project_id" placeholder="Enter Project ID"></textarea>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="items-center p-6 flex justify-end">
+                <button
+                  type="submit"
+                  class="border border-slate-300 bg-slate-200 hover:bg-slate-700 hover:text-slate-200  inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium  focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2">
+                  <svg data-id="30" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="w-4 h-4 mr-2">
                     <path d="M5 12h14"></path>
                     <path d="M12 5v14"></path>
-                </svg>
-                Join Project
-            </a>
+                  </svg>
+                  Join Project
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-        <div class="grid m-2 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            @php
-            echo
-            '
-             <a href="">
-                <div class="mx-auto my-auto ">
-                    <div
-                        class="rounded-lg w-full overflow-hidden bg-slate-100 shadow-lg transition-all hover:scale-[1.02]">
-                        <div class="p-6 rounded-lg m-2">
-                            <div class="flex flex-col ">
-                                <h2 class="text-xl font-bold mb-2">
-                                    { Project Title}
-                                </h2>
-                                <div class="">
-                                    <div
-                                        class="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold focus:outline-none focus:ring-1 focus:ring-ring focus:ring-offset-1">
-                                        {Task Status}
-                                    </div>
-                                    <div class="text-sm inline-flex w-fit items-center text-green-700 ">
-                                        Due:{duedate}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mt-2 border-2 rounded-xl h-28">
-                                <p
-                                    class="text-gray-600 px-3 h-max  overflow-hidden text-ellipsis max-h-12 md:max-h-12 lg:max-h-24">
-                                    Project Description
-                                </p>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </a>
-            
-            '
-            ;
-            @endphp
-           
-        </div>
+      </main>
     </div>
-   
-@include('components.footer')
-</body>
+  
+    {{-- footer starts --}}
+    @include('components.footer')
+    {{-- footer ends --}}
+  </body>
 
 </html>
 
 
-    {{-- a sampple card non edited version --}}
-    {{--
-    <div class="mx-auto my-auto">
-        <div class="rounded-lg overflow-hidden bg-slate-100 shadow-lg transition-all hover:scale-[1.02]">
-            <div class="p-6 overflow-hidden">
-                <h2 class="text-xl font-bold mb-2">Card Title</h2>
-                <p class="text-gray-600 h-max  overflow-hidden text-ellipsis max-h-12 md:max-h-12 lg:max-h-24">
-                    This is a description of the card content. It can be a few sentences
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet tempore id ut quidem
-                    voluptate similique excepturi in? Placeat animi dolor ipsam provident libero. Laboriosam
-                    hic, animi voluptate quo earum vero. Lorem ipsum dolor sit amet, consectetur adipisicing
-                    elit. Exercitationem, enim alias. Perspiciatis dolor, illo consequatur aliquam fuga,
-                    doloribus accusantium enim earum similique itaque accusamus hic, sunt fugit deleniti
-                    deserunt facilis?
-                </p>
-            </div>
-        </div>
-    </div>
-    --}}
-
-    {{-- Used html/static version of card used --}}
-    {{--
-    <div class="mx-auto my-auto">
-        <div class="rounded-lg w-fit overflow-hidden bg-slate-100 shadow-lg transition-all hover:scale-[1.02]">
-            <div class="p-6 overflow-hidden">
-                <div class="flex flex-col ">
-                    <h2 class="text-xl font-bold mb-2">Project Tiltle</h2>
-                    <div class="">
-                        <div
-                            class="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold focus:outline-none focus:ring-1 focus:ring-ring focus:ring-offset-1">
-                            Task Status
-                        </div>
-                        <div class="text-sm inline-flex w-fit items-center text-green-700 ">
-                            Due:{duedate}
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-2 border-2 rounded-xl h-28">
-                    <p class="text-gray-600 px-3 h-max  overflow-hidden text-ellipsis max-h-12 md:max-h-12 lg:max-h-24">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro temporibus error
-                        veritatis
-                        accusamus,
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro temporibus error
-                        veritatis
-                        accusamus,
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    --}}
+    
