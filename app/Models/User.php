@@ -63,4 +63,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Task::class, 'user_id');
     }
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class, 'project_members', 'user_id', 'project_id');
+    }
 }
