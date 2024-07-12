@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" class="bg-slate-100">
 
@@ -16,9 +17,8 @@
 
     <div class="m-4 p-4 rounded-lg bg-slate-200 border-slate-400 shadow-lg">
         <div class="flex justify-between">
-            <h2 class="text-2xl font-bold mb-5 md:mb-10 lg:mb-20">My projects</h2>
-
-            <a href="{{route('create-project')}}"
+            <h2 class="text-2xl font-bold mb-5 md:mb-10 lg:mb-20">My projects</h2>           
+            <a href="{{route('projects.create')}}"
                 class="border border-slate-700 text-slate-400 bg-slate-700 hover:bg-slate-200 hover:text-slate-700  inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium  focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -30,38 +30,39 @@
             </a>
         </div>
         <div class="grid m-2 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        
-            @foreach ($myProjects as $myProject)
-                <a href="">
-                    <div class="mx-auto my-auto ">
-                        <div
-                            class="rounded-lg w-full overflow-hidden bg-slate-100 shadow-lg transition-all hover:scale-[1.02]">
-                            <div class="p-6 rounded-lg m-2">
-                                <div class="flex flex-col ">
-                                    <h2 class="text-xl font-bold mb-2">
-                                        {{ $myProject->name }}
-                                    </h2>
-                                    <div class="">
-                                        <div
-                                            class="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold focus:outline-none focus:ring-1 focus:ring-ring focus:ring-offset-1">
-                                            {{ $myProject->status }}
-                                        </div>
-                                        <div class="text-sm inline-flex w-fit items-center text-green-700 ">
-                                            Due: {{ $myProject->end_date }}
-                                        </div>
+
+            @foreach ($Projects as $project)
+            <a href="{{route('projects.show', $project->id)}}">
+                <div class="mx-auto my-auto ">
+                    <div
+                        class="rounded-lg w-full overflow-hidden bg-slate-100 shadow-lg transition-all hover:scale-[1.02]">
+                        <div class="p-6 rounded-lg m-2">
+                            <div class="flex flex-col ">
+                                <h2 class="text-xl font-bold mb-2">
+                                    {{ $project->name }}
+                                </h2>
+                                <div class="">
+                                    <div
+                                        class="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold focus:outline-none focus:ring-1 focus:ring-ring focus:ring-offset-1">
+                                        {{ $project->status }}
+                                    </div>
+                                    <div
+                                        class="text-sm inline-flex w-fit items-center text-green-700 rounded-full border px-2.5 py-0.5 ">
+                                        Due: {{ $project->due_date }}
                                     </div>
                                 </div>
-                                <div class="mt-2 border-2 rounded-xl h-28">
-                                    <p
-                                        class="text-gray-600 px-3 h-max  overflow-hidden text-ellipsis max-h-12 md:max-h-12 lg:max-h-24">
-                                        {{ $myProject->description }}
-                                    </p>
-                                </div>
-
                             </div>
+                            <div class="mt-2 border-2 rounded-xl h-28">
+                                <p
+                                    class="text-gray-600 px-3 h-max  overflow-hidden text-ellipsis max-h-12 md:max-h-12 lg:max-h-24">
+                                    {{ $project->description }}
+                                </p>
+                            </div>
+
                         </div>
                     </div>
-                </a>
+                </div>
+            </a>
             @endforeach
 
         </div>
