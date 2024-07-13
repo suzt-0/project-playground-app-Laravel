@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('start_date')->nullable(); // already at timestamp => created_at
             $table->date('due_date')->nullable();// changed from end_date to due_date
             $table->enum('status',['Not-Started','Ongoing','Completed','Dropped']);
+            $table->enum('visibility',['Public','Private']);
             $table->timestamps();
         });
     }

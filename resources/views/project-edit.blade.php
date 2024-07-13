@@ -38,19 +38,19 @@
 
 
 
-  <div class="rounded-lg border bg-card text-card-foreground shadow-sm w-full max-w-md mx-auto" >
+  <div class="rounded-lg border bg-card text-card-foreground shadow-sm w-full max-w-md mx-auto bg-slate-200 border-slate-900" >
     <div class="flex flex-col space-y-1.5 p-6" >
       <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">Edit Project</h3>
       <p class="text-sm ">Update the details for this project.</p>
     </div>
     <div class="p-6">
-      {{-- <form method="POST" action="{{ route('projects.update', $project->id) }}" class="grid gap-4">
+      <form method="POST" action="{{ route('projects.update', $project->id) }}" class="grid gap-4">
         @csrf
         @method('PATCH')
         <div class="grid gap-2">
             <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="name">Project Name</label>
             <input
-                class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm  file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder: focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                class="flex h-10 w-full rounded-md border border-slate-900 bg-background px-3 py-2 text-sm  file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder: focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                 id="name" name="name" type="text" value="{{ $project->name }}">
         </div>
         <div class="grid gap-2">
@@ -84,9 +84,9 @@
                 Edit Project
             </button>
         </div>
-    </form> --}}
+    </form>
     
-      <form method="POST" class="grid gap-4">
+      {{-- <form method="POST" class="grid gap-4">
         @csrf @method('PATCH')
         <div class="grid gap-2">
           <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -132,7 +132,7 @@
             Edit Project
           </button>
         </div>
-      </form>
+      </form> --}}
     </div>
   </div>
 

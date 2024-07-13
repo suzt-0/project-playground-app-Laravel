@@ -112,7 +112,7 @@
               <div class="grid gap-2">
                 <label for="status"
                   class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Status</label>
-                <select id="status" name="status" class="mt-1 p-2 w-auto border rounded-md  focus:ring-2">
+                <select id="status" name="status" class="mt-1 p-2 w-auto border rounded-md">
                   <option class="bg-slate-800 text-slate-50" selected value="Not-Started">Not Started</option>
                   <option class="bg-slate-800 text-slate-50" value="Ongoing">Ongoing</option>
                   <option class="bg-slate-800 text-slate-50" value="Completed">Completed</option>

@@ -60,7 +60,7 @@ class TaskController extends Controller
             'due_date' => 'date|after_or_equal:start_date',
             'priority' => 'required|string|in:low,medium,high,urgent',
             'status' => 'required|string|in:Not Assigned,Assigned,Ongoing,Completed',
-            'user_id'=> 'required|exists:users,id',
+            'user_id'=> 'exists:users,id',
             'project_id'=> 'required|exists:projects,id',
         ]);
 

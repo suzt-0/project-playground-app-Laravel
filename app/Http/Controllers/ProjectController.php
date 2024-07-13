@@ -103,7 +103,7 @@ class ProjectController extends Controller
      */
    public function edit(Project $project)
     {
-        return view('edit-project', compact('project'));
+        return view('project-edit', compact('project'));
     }
 
     /**
@@ -148,6 +148,10 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        $project->delete();
+        try {
+            $project->delete();
+        } catch (\Throwable $th) {
+            dd($th);
+        }
     }
 }

@@ -33,65 +33,9 @@
     {{ session('success') }}
   </div>
   @endif
-  <div class="m-1 flex flex-row-reverse">
-    {{-- Delete button --}}
-    <div class="items-center p-3 flex justify-end">
-      <form action="{{route('projects.destroy', $project->id)}}" method="POST">@method('DELETE') @csrf
-        <button type="submit"
-          class="border p-1 border-slate-300 bg-slate-200 hover:bg-rose-700 hover:text-rose-200  inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium  focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2">
-          <svg viewBox="0 0 24 24" width="30" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g id="SVGRepo_bgCarrier" stroke-width=""></g>
-            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-            <g id="SVGRepo_iconCarrier">
-              <path d="M10 12V17" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              </path>
-              <path d="M14 12V17" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              </path>
-              <path d="M4 7H20" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              </path>
-              <path d="M6 10V18C6 19.6569 7.34315 21 9 21H15C16.6569 21 18 19.6569 18 18V10" stroke="currentcolor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-              <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z" stroke="currentcolor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-            </g>
-          </svg>
-          Delete
-        </button>
-      </form>
-    </div>
-    {{-- Edit button --}}
-    <div class="items-center p-3 flex justify-end">
-      <a href="{{ route('projects.edit', $project->id) }}"
-        class="border p-1 border-slate-300 bg-slate-200 hover:bg-slate-700 hover:text-slate-200 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2">
-        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-          <g id="SVGRepo_iconCarrier">
-            <path fill-rule="evenodd" clip-rule="evenodd"
-              d="M8.56078 20.2501L20.5608 8.25011L15.7501 3.43945L3.75012 15.4395V20.2501H8.56078ZM15.7501 5.56077L18.4395 8.25011L16.5001 10.1895L13.8108 7.50013L15.7501 5.56077ZM12.7501 8.56079L15.4395 11.2501L7.93946 18.7501H5.25012L5.25012 16.0608L12.7501 8.56079Z"
-              fill="currentcolor"></path>
-          </g>
-        </svg>
-        Edit
-      </a>
-      {{-- <button type="submit"
-        class="border p-1 border-slate-300 bg-slate-200 hover:bg-slate-700 hover:text-slate-200  inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium  focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2">
-        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-          <g id="SVGRepo_iconCarrier">
-            <path fill-rule="evenodd" clip-rule="evenodd"
-              d="M8.56078 20.2501L20.5608 8.25011L15.7501 3.43945L3.75012 15.4395V20.2501H8.56078ZM15.7501 5.56077L18.4395 8.25011L16.5001 10.1895L13.8108 7.50013L15.7501 5.56077ZM12.7501 8.56079L15.4395 11.2501L7.93946 18.7501H5.25012L5.25012 16.0608L12.7501 8.56079Z"
-              fill="currentcolor"></path>
-          </g>
-        </svg>
-        Edit
-      </button> --}}
-    </div>
-
-  </div>
-  <main class="flex-1 flex flex-col text-slate-700 gap-4  md:gap-8 md:p-10">
+  <main class="flex-1 flex flex-col text-slate-700 gap-4 p-4 md:gap-8 md:p-10">
     <div class="max-w-6xl w-full mx-auto grid md:grid-cols-2 gap-8">
+
       {{-- Project Card Starts --}}
       <div class="rounded-lg border bg-slate-50 shadow-sm">
         <div class="flex flex-col space-y-1.5 p-5">
@@ -179,52 +123,42 @@
         </div>
         <div class="p-6 grid gap-4">
           <div class="relative w-full overflow-auto">
-            <table class="w-full text-sm">
-              <thead class="">
-                <tr class="border-b grid grid-cols-2 md:grid-cols-4 transition-colors">
-                  <th class="h-12 px-4 text-left block align-middle font-medium">
+            <table class="w-full caption-bottom text-sm">
+              <thead class="[&amp;_tr]:border-b">
+                <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+                  <th
+                    class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
                     Task</th>
-                  <th class="h-12 px-4 text-left  align-middle font-medium">
-                    Assigned-to</th>
-                  <th class="h-12 px-4 text-left hidden md:grid align-middle font-medium ">
+                  <th
+                    class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+                    Assigned to</th>
+                  <th
+                    class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
                     Status</th>
-                  <th class="h-12 px-4 text-left hidden md:grid align-middle font-medium">
-                    Priority</th>
                 </tr>
               </thead>
-              <tbody class="">
+              <tbody class="[&amp;_tr:last-child]:border-0">
                 {{-- task list starts --}}
                 @foreach ($tasks as $task)
-                <tr
-                  class="border-b grid grid-cols-2 md:grid-cols-4 transition-colors hover:bg-slate-200 data-[state=selected]:bg-muted">
+                <tr class="border-b  transition-colors hover:bg-slate-200 data-[state=selected]:bg-muted">
                   {{-- name and description --}}
-                  <td class="p-4 align-middle ">
+                  <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
                     {{-- task name --}}
-                    <div class="font-medium ">{{$task->name}}</div>  
-                    
+                    <div class="font-medium">{{$task->name}}</div>
                     {{-- task description --}}
-                    <div class="text-sm text-muted-foreground">{{$task->description}}</div>
+                    <div class="text-sm text-muted-foreground">Task Info</div>
                   </td>
                   {{-- assigned to --}}
-                  <td class="p-4 align-middle ">
+                  <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
                     <div class="flex items-center gap-2">
-                      @isset($task->user->name)
-                      <div class="font-medium first-letter:capitalize">{{$task->user->name}}</div>
-                      @endisset
-                      <div class="font-medium first-letter:capitalize">Not assigned</div>
+                      <div class="font-medium">{{$task->user->name}}</div>
                     </div>
                   </td>
                   {{-- status --}}
-                  <td class="p-4 hidden md:grid align-middle ">
+                  <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
                     <div
                       class="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80"
                       data-v0-t="badge">{{$task->status}}</div>
-                  </td>
-                  {{-- priority --}}
-                  <td class="p-4 hidden md:grid align-middle ">
-                    <div
-                      class="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80"
-                      data-v0-t="badge">{{$task->priority}}</div>
                   </td>
                 </tr>
                 @endforeach
@@ -239,7 +173,7 @@
             @csrf
             <input type="hidden" name="project_id" id="project_id" value="{{ $project->id }}">
             <button type="submit"
-              class="border border-slate-300 bg-slate-200 hover:bg-green-700 hover:text-slate-200  inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium  focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2">
+              class="border border-slate-300 bg-slate-200 hover:bg-slate-700 hover:text-slate-200  inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium  focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2">
               <svg data-id="30" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 class="w-4 h-4 mr-2">
