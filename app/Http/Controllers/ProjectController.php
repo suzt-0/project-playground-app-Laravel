@@ -150,8 +150,11 @@ class ProjectController extends Controller
     {
         try {
             $project->delete();
-        } catch (\Throwable $th) {
-            dd($th);
+            $project->projectmember()->delete();
+        } catch (\Exception $e) {
+
+            // Handle failure
+            return redirect()->back()->with('error', 'Failed to delete project: ' . $e->getMessage());
         }
     }
 }

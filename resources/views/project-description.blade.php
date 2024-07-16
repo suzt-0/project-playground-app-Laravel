@@ -13,26 +13,7 @@
   {{-- navbar starts --}}
   @include('components.navbar')
   {{-- navbar ends --}}
-  @if ($errors->any())
-  <div>
-    <ul>
-      @foreach ($errors->all() as $error)
-      <li>{{ $error }}</li>
-      @endforeach
-    </ul>
-  </div>
-  @endif
-  @if (session('error'))
-  <div class="alert alert-danger">
-    {{ session('error') }}
-  </div>
-  @endif
-
-  @if (session('success'))
-  <div class="alert alert-success">
-    {{ session('success') }}
-  </div>
-  @endif
+  @if (Auth::user()->id == $project->admin_id)
   <div class="m-1 flex flex-row-reverse">
     {{-- Delete button --}}
     <div class="items-center p-3 flex justify-end">
@@ -90,6 +71,7 @@
     </div>
 
   </div>
+  @endif
   <main class="flex-1 flex flex-col text-slate-700 gap-4  md:gap-8 md:p-10">
     <div class="max-w-6xl w-full mx-auto grid md:grid-cols-2 gap-8">
       {{-- Project Card Starts --}}
@@ -156,16 +138,20 @@
         <div class="p-6 grid gap-4">
           <div class="grid border rounded p-3 gap-4  max-h-80 overflow-y-auto">
             {{-- member list Starts --}}
-            @foreach ($members as $member)
-            {{-- <li>{{ $member->name }} ({{ $member->email }})</li> --}}
+            @forelse ($members as $member)
             <div class="flex p-1 items-center gap-4">
               <div class="grid gap-1">
                 <div class="font-medium first-letter:capitalize">{{ $member->name }}</div>
                 <div class="text-sm text-muted-foreground">{{ $member->email }}</div>
               </div>
             </div>
-            @endforeach
-            {{-- member list Ends --}}
+            @empty
+            <div class="flex p-1 items-center gap-4">
+              <div class="grid gap-1">
+                <div class="text-lg">No members found</div>
+              </div>
+            </div>
+            @endforelse
           </div>
         </div>
       </div>
@@ -194,37 +180,47 @@
               </thead>
               <tbody class="">
                 {{-- task list starts --}}
+
                 @foreach ($tasks as $task)
                 <tr
                   class="border-b grid grid-cols-2 md:grid-cols-4 transition-colors hover:bg-slate-200 data-[state=selected]:bg-muted">
                   {{-- name and description --}}
                   <td class="p-4 align-middle ">
-                    {{-- task name --}}
-                    <div class="font-medium ">{{$task->name}}</div>  
-                    
-                    {{-- task description --}}
-                    <div class="text-sm text-muted-foreground">{{$task->description}}</div>
+                    <a href="{{route('tasks.show',$task->id)}}">
+                      {{-- task name --}}
+                      <div class="font-medium ">{{$task->name}}</div>
+
+                      {{-- task description --}}
+                      <div class="text-sm text-muted-foreground">{{$task->description}}</div>
+                    </a>
                   </td>
                   {{-- assigned to --}}
                   <td class="p-4 align-middle ">
-                    <div class="flex items-center gap-2">
-                      @isset($task->user->name)
-                      <div class="font-medium first-letter:capitalize">{{$task->user->name}}</div>
-                      @endisset
-                      <div class="font-medium first-letter:capitalize">Not assigned</div>
-                    </div>
+                    <a href="{{route('tasks.show',$task->id)}}">
+                      <div class="flex items-center gap-2">
+                        @if ($task->user)
+                        <div class="font-medium first-letter:capitalize">{{ $task->user->name }}</div>
+                        @else
+                        <div class="font-medium first-letter:capitalize">Not assigned</div>
+                        @endif
+                      </div>
+                    </a>
                   </td>
                   {{-- status --}}
                   <td class="p-4 hidden md:grid align-middle ">
-                    <div
-                      class="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80"
-                      data-v0-t="badge">{{$task->status}}</div>
+                    <a href="{{route('tasks.show',$task->id)}}">
+                      <div
+                        class="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                        data-v0-t="badge">{{$task->status}}</div>
+                    </a>
                   </td>
                   {{-- priority --}}
                   <td class="p-4 hidden md:grid align-middle ">
-                    <div
-                      class="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80"
-                      data-v0-t="badge">{{$task->priority}}</div>
+                    <a href="{{route('tasks.show',$task->id)}}">
+                      <div
+                        class="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                        data-v0-t="badge">{{$task->priority}}</div>
+                    </a>
                   </td>
                 </tr>
                 @endforeach
@@ -233,8 +229,8 @@
             </table>
           </div>
         </div>
+        @if (Auth::user()->id == $project->admin_id)
         <div class="p-6 flex items-center justify-end">
-
           <form action="{{ route('tasks.setProjectId')}}" method="POST">
             @csrf
             <input type="hidden" name="project_id" id="project_id" value="{{ $project->id }}">
@@ -250,8 +246,29 @@
             </button>
           </form>
         </div>
+        @endif
       </div>
   </main>
+  @if ($errors->any())
+  <div>
+    <ul>
+      @foreach ($errors->all() as $error)
+      <li>{{ $error }}</li>
+      @endforeach
+    </ul>
+  </div>
+  @endif
+  @if (session('error'))
+  <div class="alert alert-danger">
+    {{ session('error') }}
+  </div>
+  @endif
+
+  @if (session('success'))
+  <div class="alert alert-success">
+    {{ session('success') }}
+  </div>
+  @endif
 
   {{-- footer starts --}}
   @include('components.footer')

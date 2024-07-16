@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="bg-gray-100">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
@@ -10,7 +10,7 @@
   @vite('resources/css/dashboard.css')
 </head>
 
-<body>
+<body class="bg-emerald-50">
 
   @include('components.navbar')
   {{-- navbar ends here --}}
@@ -23,7 +23,7 @@
       </div>
       <div class="flex flex-wrap items-start justify-end -mb-3">
         <a href="{{route('joinProjects.create')}}"
-          class="inline-flex px-5 py-3 text-slate-600 hover:bg-slate-600 hover:text-slate-200 border border-slate-600 hover:scale-105 rounded-md mb-3">
+          class="inline-flex px-5 py-3 text-slate-600 bg-slate-300 hover:bg-emerald-600 hover:text-slate-200  hover:scale-105 rounded-md mb-3">
           <svg aria-hidden="true" fill="none" viewbox="0 0 24 24" stroke="currentColor"
             class="flex-shrink-0 h-5 w-5 -ml-1 mt-0.5 mr-2">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -32,7 +32,7 @@
           Join Existing Project
         </a>
         <a href="{{route('projects.create')}}"
-          class="inline-flex px-5 py-3 text-slate-50 bg-slate-600 hover:bg-inherit hover:text-slate-600 border border-slate-600 hover:scale-105 rounded-md ml-6 mb-3">
+          class="inline-flex px-5 py-3 text-slate-50 bg-slate-600 hover:text-slate-50 hover:bg-indigo-600  hover:scale-105 rounded-md ml-6 mb-3">
           <svg aria-hidden="true" fill="none" viewbox="0 0 24 24" stroke="currentColor"
             class="flex-shrink-0 h-6 w-6 text-inherit -ml-1 mr-2">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
@@ -120,6 +120,7 @@
       </a>
 
     </section>
+    
     <section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xl:grid-rows-1 xl:grid-flow-col gap-2">
       {{-- task list card --}}
       <div class="row-span-3 col-span-2  bg-white shadow rounded-lg">
@@ -145,7 +146,7 @@
                     class="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
                     {{ $task->priority }}
                   </div>
-                  <div class="text-sm">
+                  <div class="text-sm text-rose-500">
                     Due date: {{ $task->due_date }}
                   </div>
                 </div>

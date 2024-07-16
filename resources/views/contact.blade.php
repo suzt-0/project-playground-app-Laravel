@@ -25,34 +25,36 @@
                     simple tool.</p>
             </div>
             <ul role="list" class="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
-
-                {{-- orginal version --}}
-
-                {{-- <li>
-                    <div class="flex items-center gap-x-6">
-                        <img class="h-16 w-16 rounded-full"
-                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                            alt="">
-                        <div>
-                            <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">Leslie Alexander
-                            </h3>
-                            <p class="text-sm font-semibold leading-6 text-indigo-600">Co-Founder / CEO</p>
-                        </div>
-                    </div>
-                </li> --}}
-
-                {{-- edited version --}}
                 <li>
                     <div class="rounded-lg overflow-hidden bg-slate-100 shadow-lg transition-all hover:scale-[1.02]">
                         <div class="p-6 overflow-hidden">
-                            <h2 class="text-xl font-bold mb-2">Backend Developer</h2>
+                            <h2 class="text-2xl font-bold mb-2">Backend Developer</h2>
                             <div class="flex items-center gap-x-6">
                                 <img class="h-16 w-16 rounded-full"
-                                    {{-- src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" --}}
                                     alt="Sujit Bhattarai">
                                 <div>
-                                    <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">Sujit Bhattarai</h3>
-                                    <p class="text-sm font-semibold leading-6 text-indigo-600">Co-Founder / CEO</p>
+                                    <h3 class="text-xl font-semibold leading-7 tracking-tight text-gray-900">Sujit Bhattarai</h3>
+                                    {{-- <p class="text-sm font-semibold leading-6 text-indigo-600">Co-Founder / CEO</p> --}}
+                                </div>
+                            </div>
+                            <p
+                                class="text-gray-600 h-max  overflow-hidden text-ellipsis max-h-12 md:max-h-12 lg:max-h-24">
+                                
+                            </p>
+
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="rounded-lg overflow-hidden bg-slate-100 shadow-lg transition-all hover:scale-[1.02]">
+                        <div class="p-6 overflow-hidden">
+                            <h2 class="text-2xl font-bold mb-2">Frontend Developer</h2>
+                            <div class="flex items-center gap-x-6">
+                                <img class="h-16 w-16 rounded-full"
+                                    alt="Sujit Bhattarai">
+                                <div>
+                                    <h3 class="text-xl font-semibold leading-7 tracking-tight text-gray-900">Sujit Bhattarai</h3>
+                                    {{-- <p class="text-sm font-semibold leading-6 text-indigo-600">Co-Founder / CEO</p> --}}
                                 </div>
                             </div>
                             <p
@@ -67,36 +69,13 @@
                 <li>
                     <div class="rounded-lg overflow-hidden bg-slate-100 shadow-lg transition-all hover:scale-[1.02]">
                         <div class="p-6 overflow-hidden">
-                            <h2 class="text-xl font-bold mb-2">Frontend Developer</h2>
+                            <h2 class="text-2xl font-bold mb-2">Figma Designer</h2>
                             <div class="flex items-center gap-x-6">
                                 <img class="h-16 w-16 rounded-full"
-                                    {{-- src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" --}}
                                     alt="Sujit Bhattarai">
                                 <div>
-                                    <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">Sujit Bhattarai</h3>
-                                    <p class="text-sm font-semibold leading-6 text-indigo-600">Co-Founder / CEO</p>
-                                </div>
-                            </div>
-                            <p
-                                class="text-gray-600 h-max  overflow-hidden text-ellipsis max-h-12 md:max-h-12 lg:max-h-24">
-                                This is a description of the card content. It can be a few sentences
-
-                            </p>
-
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="rounded-lg overflow-hidden bg-slate-100 shadow-lg transition-all hover:scale-[1.02]">
-                        <div class="p-6 overflow-hidden">
-                            <h2 class="text-xl font-bold mb-2">Figma Designer</h2>
-                            <div class="flex items-center gap-x-6">
-                                <img class="h-16 w-16 rounded-full"
-                                    {{-- src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" --}}
-                                    alt="Sujit Bhattarai">
-                                <div>
-                                    <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">Sujit Bhattarai</h3>
-                                    <p class="text-sm font-semibold leading-6 text-indigo-600">Co-Founder / CEO</p>
+                                    <h3 class="text-xl font-semibold leading-7 tracking-tight text-gray-900">Sujit Bhattarai</h3>
+                                    {{-- <p class="text-sm font-semibold leading-6 text-indigo-600">Co-Founder / CEO</p> --}}
                                 </div>
                             </div>
                             <p
@@ -112,14 +91,13 @@
                 <li>
                     <div class="rounded-lg overflow-hidden bg-slate-100 shadow-lg transition-all hover:scale-[1.02]">
                         <div class="p-6 overflow-hidden">
-                            <h2 class="text-xl font-bold mb-2">Quality Assurance</h2>
+                            <h2 class="text-2xl font-bold mb-2">Quality Assurance</h2>
                             <div class="flex items-center gap-x-6">
                                 <img class="h-16 w-16 rounded-full"
-                                    {{-- src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" --}}
                                     alt="Sujit Bhattarai">
                                 <div>
-                                    <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">Sujit Bhattarai</h3>
-                                    <p class="text-sm font-semibold leading-6 text-indigo-600">Co-Founder / CEO</p>
+                                    <h3 class="text-xl font-semibold leading-7 tracking-tight text-gray-900">Sujit Bhattarai</h3>
+                                    {{-- <p class="text-sm font-semibold leading-6 text-indigo-600">Co-Founder / CEO</p> --}}
                                 </div>
                             </div>
                             <p

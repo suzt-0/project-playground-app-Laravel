@@ -1,145 +1,210 @@
 <!DOCTYPE html>
-<html lang="en" class="bg-slate-100">
-
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>TEST-Project Edit</title>
+  <title>TEST-Project Description</title>
   @vite('resources/css/app.css')
 </head>
 
-<body class="bg-slate-100">
-  {{-- navbar starts --}}
-  @include('components.navbar')
-  {{-- navbar ends --}}
-
-  @if ($errors->any())
-  <div>
-    <ul>
-      @foreach ($errors->all() as $error)
-      <li>{{ $error }}</li>
-      @endforeach
-    </ul>
-  </div>
-  @endif
-  @if (session('error'))
-  <div class="alert alert-danger">
-    {{ session('error') }}
-  </div>
-  @endif
-
-  @if (session('success'))
-  <div class="alert alert-success">
-    {{ session('success') }}
-  </div>
-  @endif
-
-
-
-
-  <div class="rounded-lg border bg-card text-card-foreground shadow-sm w-full max-w-md mx-auto" >
-    <div class="flex flex-col space-y-1.5 p-6" >
-      <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">Edit Project</h3>
-      <p class="text-sm ">Update the details for this project.</p>
-    </div>
-    <div class="p-6">
-      {{-- <form method="POST" action="{{ route('projects.update', $project->id) }}" class="grid gap-4">
-        @csrf
-        @method('PATCH')
-        <div class="grid gap-2">
-            <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="name">Project Name</label>
-            <input
-                class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm  file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder: focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                id="name" name="name" type="text" value="{{ $project->name }}">
-        </div>
-        <div class="grid gap-2">
-            <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="description">Description</label>
-            <textarea
-                class="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                id="description" name="description" placeholder="Enter project description" rows="3">{{ $project->description }}</textarea>
-        </div>
-        <div class="grid grid-cols-2 gap-4">
-            <div class="grid gap-2">
-                <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="start_date">Start Date</label>
-                <input class="form-input" name="start_date" id="start_date" type="date" value="{{ $project->start_date }}">
-            </div>
-            <div class="grid gap-2">
-                <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="due_date">Due Date</label>
-                <input class="form-input" name="due_date" id="due_date" type="date" value="{{ $project->due_date }}">
-            </div>
-        </div>
-        <div class="grid gap-2">
-            <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="status">Status</label>
-            <select id="status" name="status" class="mt-1 p-2 w-auto border rounded-md ">
-                <option class="bg-slate-800 text-slate-50" value="Not-Started" {{ $project->status == 'Not-Started' ? 'selected' : '' }}>Not Started</option>
-                <option class="bg-slate-800 text-slate-50" value="Ongoing" {{ $project->status == 'Ongoing' ? 'selected' : '' }}>Ongoing</option>
-                <option class="bg-slate-800 text-slate-50" value="Completed" {{ $project->status == 'Completed' ? 'selected' : '' }}>Completed</option>
-                <option class="bg-slate-800 text-slate-50" value="Dropped" {{ $project->status == 'Dropped' ? 'selected' : '' }}>Dropped</option>
-            </select>
-        </div>
-        <div class="items-center p-6 flex justify-end">
-            <button type="submit"
-                class="border border-slate-300 bg-slate-200 hover:bg-slate-700 hover:text-slate-200  inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium  focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2">
-                Edit Project
-            </button>
-        </div>
-    </form> --}}
-    
-      <form method="POST" class="grid gap-4">
-        @csrf @method('PATCH')
-        <div class="grid gap-2">
-          <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            for="name">Project Name</label>
-          <input
-            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm  file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder: focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-            id="name"  type="text" value="project->name">
-        </div>
-        <div class="grid gap-2">
-          <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            for="description">Description</label>
-            <textarea
-            class="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-            id="description" name="description" placeholder="Enter project description" rows="3">project->description
-          </textarea>
-        </div>
-        <div class="grid grid-cols-2 gap-4">
-          <div class="grid gap-2">
-            <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-              for="start_date">Start Date</label>
-            <input class="" name="start_date" id="start_date" type="date" >
+<body class="bg-green-50 text-slate-900 ">
+  {{-- navbar here --}}
+  @include('components.navbar-basic')
+  {{-- 1st section --}}
+  <section class="w-full md:pb-24 md:pt-8">
+    <div class="w-full px-4 md:px-6">
+      <div class="flex flex-col-reverse gap-2 md:gap-6 md:grid md:grid-cols-2">
+        {{-- left --}}
+        <div class="flex flex-col justify-center space-y-4">
+          <div class="space-y-2">
+            <h1 class="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">Turn Ideas into Reality</h1>
+            <p class="max-w-[600px] text-slate-600 md:text-xl">Our powerful project management platform turns
+              your ideas into reality, helping teams stay organized, collaborate effectively, and deliver projects on
+              time.</p>
           </div>
-          <div class="grid gap-2">
-            <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-              for="due_date">Due Date</label>
-            <input class="" name="due_date" id="due_date" type="date" >
+          <div class="flex flex-col gap-2 min-[400px]:flex-row">
+            @auth
+            <a class="inline-flex h-10 items-center justify-center rounded-md px-8 text-sm font-medium text-primary-foreground shadow transition-colors bg-slate-300 hover:bg-indigo-600 hover:text-indigo-100"
+            href="{{route('dashboard')}}">
+            Dashboard
+          </a>
+            @else
+            <a class="inline-flex h-10 items-center justify-center rounded-md px-8 text-sm font-medium text-primary-foreground shadow transition-colors bg-slate-400 hover:bg-slate-800 hover:text-stone-100"
+              href="{{route('register')}}">
+              Get Started
+            </a>
+            <a class="inline-flex h-10 items-center justify-center rounded-md border px-8 text-sm font-medium shadow-sm transition-colors bg-slate-300 hover:bg-indigo-600 hover:text-indigo-100"
+              href="{{route('login')}}">
+              Login
+            </a>
+            @endauth
           </div>
         </div>
+        {{-- right --}}
+        <div class="mx-auto overflow-hidden p-2 rounded-2xl object-cover w-full md:aspect-square">
+          <img src="{{asset('images/banner-2.jpg')}}" width="550" height="550" alt="banner image"
+            class="mx-auto  rounded-3xl object-cover md:order-last md:aspect-square">
 
-        <div class="grid gap-2">
-          <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            for="status">Status</label>
-          <select id="status" name="status" class="mt-1 p-2 w-auto border rounded-md ">
-            <option class="bg-slate-800 text-slate-50" selected value="Not-Started">Not Started</option>
-            <option class="bg-slate-800 text-slate-50" value="Ongoing">Ongoing</option>
-            <option class="bg-slate-800 text-slate-50" value="Completed">Completed</option>
-            <option class="bg-slate-800 text-slate-50" value="Dropped">Dropped</option>
-          </select>
         </div>
-        <div class="items-center p-6 flex justify-end">
-          <button type="submit"
-            class="border border-slate-300 bg-slate-200 hover:bg-slate-700 hover:text-slate-200  inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium  focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2">
-            Edit Project
-          </button>
-        </div>
-      </form>
+      </div>
     </div>
-  </div>
+  </section>
+  {{-- about section --}}
+  <span id="about"></span>
+  <section class="w-full py-12 md:py-24 lg:py-32">
+    <div class=" px-4 md:px-6">
+      <div class="flex flex-col items-center justify-center space-y-4 text-center">
+        <div class="space-y-2">
+          <h2 class="font-bold tracking-tighter text-4xl md:text-5xl lg:text-6xl">About Us</h2>
+          <p class=" cursor-default text-center md:text-2xl  lg:text-3xl">We are <span class="text-blue-600 hover:underline">Solution Seekers</span>
+            and we present to you
+            <br> <span class="text-green-600 mb-6 hover:underline">Project Management System</span> <br>
+            Easy-to-use tool for managing simpler projects without any hassel. Manage
+            your projects, Join other projects and collaborate with your team to realize your ideas using a
+            simple tool.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{-- Meet the team --}}
+  <section class="w-full py-12 mb-10 md:py-24 lg:py-32">
+    <span id="team"></span>
+    <div class=" py-24 sm:py-32">
+      <div class="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 ">
+        <div class="w-full flex justify-center">
+          <h2 class="font-bold tracking-tight text-4xl md:text-5xl lg:text-6xl">Meet the Team</h2>
+        </div>
+        <ul role="list" class="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
+          <li>
+            <a href="https://github.com/suzt-0" target="blank">
+              <div class="rounded-lg overflow-hidden bg-slate-300 shadow-lg transition-all hover:scale-[1.02]">
+                <div class="p-6 overflow-hidden">
+                  <h2 class="text-2xl font-bold mb-2">Backend Developer</h2>
+                  <div class="flex items-center gap-x-6">
+                    <img class="h-16 w-16 rounded-full" src="{{ asset('images/sujit.png') }}" alt="Sujit Bhattarai">
+                    <div>
+                      <h3 class="text-xl font-semibold leading-7 tracking-tight">Sujit Bhattarai</h3>
+                      {{-- <p class="text-sm font-semibold leading-6 text-indigo-600">Co-Founder / CEO</p> --}}
+                    </div>
+                  </div>
+                  <p class="text-gray-600 h-max  overflow-hidden text-ellipsis max-h-12 md:max-h-12 lg:max-h-24">
+                    Performed a crucial role in ensuring that the application's server-side is robust, secure, and
+                    efficient,
+                    ultimately providing a seamless experience for end users.
+                  </p>
 
-  {{-- footer starts --}}
+                </div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/suzt-0" target="blank">
+              <div class="rounded-lg overflow-hidden bg-slate-300 shadow-lg transition-all hover:scale-[1.02]">
+                <div class="p-6 overflow-hidden">
+                  <h2 class="text-2xl font-bold mb-2">Frontend Developer</h2>
+                  <div class="flex items-center gap-x-6">
+                    <img class="h-16 w-16 rounded-full" src="{{ asset('images/sujit.png') }}" alt="Sujit Bhattarai">
+                    <div>
+                      <h3 class="text-xl font-semibold leading-7 tracking-tight">Sujit Bhattarai</h3>
+                      {{-- <p class="text-sm font-semibold leading-6 text-indigo-600">Co-Founder / CEO</p> --}}
+                    </div>
+                  </div>
+                  <p class="text-gray-600 h-max  overflow-hidden text-ellipsis max-h-12 md:max-h-12 lg:max-h-24">
+                    Played a vital role in bringing the visual and interactive aspects of a web application to life,
+                    ensuring that users have an engaging and seamless experience.
+
+                  </p>
+
+                </div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/suzt-0" target="blank">
+              <div class="rounded-lg overflow-hidden bg-slate-300 shadow-lg transition-all hover:scale-[1.02]">
+                <div class="p-6 overflow-hidden">
+                  <h2 class="text-2xl font-bold mb-2">System Designer</h2>
+                  <div class="flex items-center gap-x-6">
+                    <img class="h-16 w-16 rounded-full" src="{{ asset('images/sujit.png') }}" alt="Sujit Bhattarai">
+                    <div>
+                      <h3 class="text-xl font-semibold leading-7 tracking-tight">Sujit Bhattarai</h3>
+                      {{-- <p class="text-sm font-semibold leading-6 text-indigo-600">Co-Founder / CEO</p> --}}
+                    </div>
+                  </div>
+                  <p class="text-gray-600 h-max  overflow-hidden text-ellipsis max-h-12 md:max-h-12 lg:max-h-24">
+                    Ensured that web application is well-designed, robust, and aligned with expected objectives,
+                    ultimately
+                    contributing to the success of this project.
+
+                  </p>
+
+                </div>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a href="https://github.com/suzt-0" target="blank">
+              <div class="rounded-lg overflow-hidden bg-slate-300 shadow-lg transition-all hover:scale-[1.02]">
+                <div class="p-6 overflow-hidden">
+                  <h2 class="text-2xl font-bold mb-2">Quality Assurance</h2>
+                  <div class="flex items-center gap-x-6">
+                    <img class="h-16 w-16 rounded-full" src="{{ asset('images/sujit.png') }}" alt="Sujit Bhattarai">
+                    <div>
+                      <h3 class="text-xl font-semibold leading-7 tracking-tight">Sujit Bhattarai</h3>
+                      {{-- <p class="text-sm font-semibold leading-6 text-indigo-600">Co-Founder / CEO</p> --}}
+                    </div>
+                  </div>
+                  <p class="text-gray-600 h-max  overflow-hidden text-ellipsis max-h-12 md:max-h-12 lg:max-h-24">
+                    Ensured that the web application is reliable, performs well, and meets proposed expectations,
+                    ultimately
+                    contributing to the success of the project.
+                  </p>
+
+                </div>
+              </div>
+            </a>
+          </li>
+
+          <!-- More people... -->
+        </ul>
+      </div>
+    </div>
+  </section>
+  {{-- Contact us --}}
+  <span id="contact"></span>
+  <section class="w-full py-12 md:py-24 lg:py-32">
+    <div class="container px-4 md:px-6">
+      <div class="flex flex-col items-center justify-center space-y-4 text-center">
+        <div class="space-y-2">
+          <h2 class="text-3xl font-bold tracking-tighter sm:text-5xl">Contact Us</h2>
+          <p class="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">Have
+            a question or need help?</p>
+        </div>
+        <div class="mx-auto w-full max-w-sm gap-x-8 grid grid-cols-3">
+          {{-- facebook --}}
+          <a class="grid rounded-full overflow-hidden border-2 hover:border-green-500 border-spacing-1"
+            href="https://www.facebook.com/SujitBhattarai2000/" target="blank">
+            <img src="{{ asset('images/facebook.png') }}" alt="facebook">
+          </a>
+          {{--linkedin--}}
+          <a class="grid rounded-full overflow-hidden border-2 hover:border-green-500 border-spacing-1"
+            href="https://www.linkedin.com/in/sujit-bhattarai-617b28237" target="blank">
+            <img src="{{ asset('images/linkedin.png') }}" alt="linkedin">
+          </a>
+          {{--github--}}
+          <a class="grid rounded-full overflow-hidden border-2 hover:border-green-500 border-spacing-1"
+            href="https://github.com/suzt-0" target="blank">
+            <img src="{{ asset('images/github.png') }}" alt="github">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{-- footer  --}}
   @include('components.footer')
-  {{-- footer ends --}}
-  
 </body>
 
 </html>

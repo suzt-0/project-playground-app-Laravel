@@ -31,8 +31,7 @@ class TaskController extends Controller
     public function create()
     {
         $project_id = session('project_id');
-
-        if (!$project_id) {
+        if ($project_id==null) {
             return redirect()->route('projects.index')->with('error', 'No project selected.');
         }
         try{     
@@ -86,7 +85,7 @@ class TaskController extends Controller
             $task->save();
             session()->forget('project_id');
             // Handle successful creation
-            return redirect()->route('project.index')->with('success', 'Task created successfully!');
+            return redirect()->route('project.show',$task->project_id)->with('success', 'Task created successfully!');
         } catch (\Exception $e) {
 
             // Handle failure
@@ -100,7 +99,7 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        return view('show.task', compact('task'));
+        return view('task-description', compact('task'));
     }
 
     /**
@@ -108,7 +107,9 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        //   return edit view
+        $project = Project::findOrFail($task->project_id);
+        $members = $project->users;
+        return view('task-edit', compact('task','members'));
     }
 
     /**
@@ -119,6 +120,41 @@ class TaskController extends Controller
         //samee as store but remove unnecessary parts susch as 
         // "$user=Auth::user();
         // $task = new Task();"
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'start_date' => 'required|date',
+            'due_date' => 'date|after_or_equal:start_date',
+            'status' => 'required|string|in:Not Assigned,Assigned,Ongoing,Completed',
+            'priority' => 'required|string|in:low,medium,high,urgent',
+            // 'user_id'=> 'exists:users,id',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        try {
+
+            // Create the project
+            $task->name = $request->name;
+            $task->description = $request->description;
+            $task->start_date = $request->start_date;
+            $task->due_date = $request->due_date;
+            $task->priority = $request->priority;
+            $task->status = $request->status;
+            $task->user_id = $request->user_id;
+            
+            $task->save();
+
+            // Handle successful creation
+            return redirect()->back()->with('success', 'Task edited successfully!');
+        } catch (\Exception $e) {
+
+            // Handle failure
+            return redirect()->back()->with('error', 'Failed to edit task: ' . $e->getMessage())->withInput();
+        }
+
     }
 
     /**

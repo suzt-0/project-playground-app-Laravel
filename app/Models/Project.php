@@ -22,9 +22,9 @@ class Project extends Model
         return $this->hasMany(Task::class, 'project_id','id');
     }
 
-    // public function projectmember() :HasMany{
-    //     return $this->hasMany(ProjectMember::class, 'project_id','id');
-    // }
+    public function projectmember() :HasMany{
+        return $this->hasMany(ProjectMember::class, 'project_id','id');
+    }
 
     public function admin() :BelongsTo
     {

@@ -1,83 +1,210 @@
 <!DOCTYPE html>
-<html lang="en" class="bg-slate-100">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Project-Playground</title>
-    @vite('resources/css/app.css')
-    @vite('resources/css/dashboard.css')
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <title>Welcome to PMS</title>
+  @vite('resources/css/app.css')
 </head>
 
-<body>
-    {{-- navbar starts here  --}}
-    @include('components.navbar-basic')
-    {{-- <header class="text-gray-700 body-font border-b border-gray-300">
-        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" href="{{route('home')}}">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
-                    stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
-                    viewBox="0 0 24 24">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                </svg>
-                <span class="ml-3 text-xl">Project Management System</span>
+<body class="bg-emerald-50 text-slate-900 ">
+  {{-- navbar here --}}
+  @include('components.navbar-basic')
+  {{-- 1st section --}}
+  <section class="w-full md:pb-24 md:pt-8">
+    <div class="w-full px-4 md:px-6">
+      <div class="flex flex-col-reverse gap-2 md:gap-6 md:grid md:grid-cols-2">
+        {{-- left --}}
+        <div class="flex flex-col justify-center space-y-4">
+          <div class="space-y-2">
+            <h1 class="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">Turn Ideas into Reality</h1>
+            <p class="max-w-[600px] text-slate-600 md:text-xl">Our powerful project management platform turns
+              your ideas into reality, helping teams stay organized, collaborate effectively, and deliver projects on
+              time.</p>
+          </div>
+          <div class="flex flex-col gap-2 min-[400px]:flex-row">
+            @auth
+            <a class="inline-flex h-10 items-center justify-center rounded-md px-8 text-sm font-medium text-primary-foreground shadow transition-colors bg-slate-300 hover:bg-indigo-600 hover:text-indigo-100"
+            href="{{route('dashboard')}}">
+            Dashboard
+          </a>
+            @else
+            <a class="inline-flex h-10 items-center justify-center rounded-md px-8 text-sm font-medium text-primary-foreground shadow transition-colors bg-slate-800 hover:bg-emerald-800 text-stone-100"
+              href="{{route('register')}}">
+              Get Started
             </a>
-            <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-                <a href="#" class="mr-5 hover:text-gray-900 hover:underline hover:decoration-gray-900">About</a>
-                <a href="#" class="mr-5 hover:text-gray-900 hover:underline hover:decoration-gray-900">Contacts</a>
-                <a href="#" class="mr-5 hover:text-gray-900 hover:underline hover:decoration-gray-900">User Manual</a>
-            </nav>
-        </div>
-    </header> --}}
-
-
-    <section class="text-gray-700 body-font">
-        <div class="container mx-auto flex px-5 py-24 flex-col md:flex-row items-center">
-
-            <div
-                class="flex flex-col mb-16 items-center text-center md:w-1/2 md:pr-16 md:items-start md:text-left md:mb-0 lg:flex-grow">
-
-                <h1 class="title-font text-3xl mb-4 font-medium text-gray-900 sm:text-4xl">Project
-                    <br class="inline-block lg:hidden">
-                    Management System
-                </h1>
-                <h2><q class="mb-8 leading-relaxed max-w-fit ">Manage your Projects more efficiently with Project Management System</q></h2>
-                <div class="mt-4 flex justify-center">
-                    @auth
-
-                    <a href="{{route('dashboard')}}">
-                        <button
-                        class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 rounded text-lg focus:outline-none hover:bg-indigo-600">
-                        Dashboard
-                    </button>
-                </a>
-
-                    @else
-                        
-                    <a href="{{route('register')}}">
-                        <button
-                        class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 rounded text-lg focus:outline-none hover:bg-indigo-600">
-                        Register
-                    </button>
-                </a>
-                
-                <a href="{{route('login')}}">
-                    <button
-                    class="ml-4 inline-flex text-gray-800 bg-gray-300 border-0 py-2 px-6 rounded text-lg focus:outline-none hover:bg-gray-400 hover:text-gray-900">
-                    Login
-                </button>
+            <a class="inline-flex h-10 items-center justify-center rounded-md border px-8 text-sm font-medium shadow-sm transition-colors bg-slate-300 hover:bg-indigo-600 hover:text-indigo-100"
+              href="{{route('login')}}">
+              Login
             </a>
             @endauth
+          </div>
+        </div>
+        {{-- right --}}
+        <div class="mx-auto overflow-hidden p-2 rounded-2xl object-cover w-full md:aspect-square">
+          <img src="{{asset('images/banner-2.jpg')}}" width="550" height="550" alt="banner image"
+            class="mx-auto  rounded-3xl object-cover md:order-last md:aspect-square">
+
+        </div>
+      </div>
+    </div>
+  </section>
+  {{-- about section --}}
+  <span id="about"></span>
+  <section class="w-full py-12 md:py-24 lg:py-32">
+    <div class=" px-4 md:px-6">
+      <div class="flex flex-col items-center justify-center space-y-4 text-center">
+        <div class="space-y-2">
+          <h2 class="font-bold tracking-tighter text-4xl md:text-5xl lg:text-6xl">About Us</h2>
+          <p class=" cursor-default text-center md:text-2xl  lg:text-3xl">We are <span class="text-blue-600 hover:underline">Solution Seekers</span>
+            and we present to you
+            <br> <span class="text-green-600 mb-6 hover:underline">Project Management System</span> <br>
+            Easy-to-use tool for managing simpler projects without any hassel. Manage
+            your projects, Join other projects and collaborate with your team to realize your ideas using a
+            simple tool.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{-- Meet the team --}}
+  <section class="w-full py-12 mb-10 md:py-24 lg:py-32">
+    <span id="team"></span>
+    <div class=" py-24 sm:py-32">
+      <div class="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 ">
+        <div class="w-full flex justify-center">
+          <h2 class="font-bold tracking-tight text-4xl md:text-5xl lg:text-6xl">Meet the Team</h2>
+        </div>
+        <ul role="list" class="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
+          <li>
+            <a href="https://github.com/suzt-0" target="blank">
+              <div class="rounded-lg overflow-hidden bg-slate-300 hover:bg-emerald-300 shadow-lg transition-all hover:scale-[1.02]">
+                <div class="p-6 overflow-hidden">
+                  <h2 class="text-2xl font-bold mb-2">Backend Developer</h2>
+                  <div class="flex items-center gap-x-6">
+                    <img class="h-16 w-16 rounded-full" src="{{ asset('images/sujit.png') }}" alt="Sujit Bhattarai">
+                    <div>
+                      <h3 class="text-xl font-semibold leading-7 tracking-tight">Sujit Bhattarai</h3>
+                      {{-- <p class="text-sm font-semibold leading-6 text-indigo-600">Co-Founder / CEO</p> --}}
+                    </div>
+                  </div>
+                  <p class="text-gray-600 h-max  overflow-hidden text-ellipsis max-h-12 md:max-h-12 lg:max-h-24">
+                    Performed a crucial role in ensuring that the application's server-side is robust, secure, and
+                    efficient,
+                    ultimately providing a seamless experience for end users.
+                  </p>
 
                 </div>
-            </div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/suzt-0" target="blank">
+              <div class="rounded-lg overflow-hidden bg-slate-300 hover:bg-emerald-300  shadow-lg transition-all hover:scale-[1.02]">
+                <div class="p-6 overflow-hidden">
+                  <h2 class="text-2xl font-bold mb-2">Frontend Developer</h2>
+                  <div class="flex items-center gap-x-6">
+                    <img class="h-16 w-16 rounded-full" src="{{ asset('images/sujit.png') }}" alt="Sujit Bhattarai">
+                    <div>
+                      <h3 class="text-xl font-semibold leading-7 tracking-tight">Sujit Bhattarai</h3>
+                      {{-- <p class="text-sm font-semibold leading-6 text-indigo-600">Co-Founder / CEO</p> --}}
+                    </div>
+                  </div>
+                  <p class="text-gray-600 h-max  overflow-hidden text-ellipsis max-h-12 md:max-h-12 lg:max-h-24">
+                    Played a vital role in bringing the visual and interactive aspects of a web application to life,
+                    ensuring that users have an engaging and seamless experience.
 
-            <div class="w-5/6 md:w-1/2 lg:w-full lg:max-w-lg">
-                <img class="object-cover object-center rounded" src="https://dummyimage.com/720x600/edf2f7/a5afbd">
-            </div>
+                  </p>
+
+                </div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/suzt-0" target="blank">
+              <div class="rounded-lg overflow-hidden bg-slate-300 hover:bg-emerald-300 shadow-lg transition-all hover:scale-[1.02]">
+                <div class="p-6 overflow-hidden">
+                  <h2 class="text-2xl font-bold mb-2">System Designer</h2>
+                  <div class="flex items-center gap-x-6">
+                    <img class="h-16 w-16 rounded-full" src="{{ asset('images/sujit.png') }}" alt="Sujit Bhattarai">
+                    <div>
+                      <h3 class="text-xl font-semibold leading-7 tracking-tight">Sujit Bhattarai</h3>
+                      {{-- <p class="text-sm font-semibold leading-6 text-indigo-600">Co-Founder / CEO</p> --}}
+                    </div>
+                  </div>
+                  <p class="text-gray-600 h-max  overflow-hidden text-ellipsis max-h-12 md:max-h-12 lg:max-h-24">
+                    Ensured that web application is well-designed, robust, and aligned with expected objectives,
+                    ultimately
+                    contributing to the success of this project.
+
+                  </p>
+
+                </div>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a href="https://github.com/suzt-0" target="blank">
+              <div class="rounded-lg overflow-hidden bg-slate-300 hover:bg-emerald-300 shadow-lg transition-all hover:scale-[1.02]">
+                <div class="p-6 overflow-hidden">
+                  <h2 class="text-2xl font-bold mb-2">Quality Assurance</h2>
+                  <div class="flex items-center gap-x-6">
+                    <img class="h-16 w-16 rounded-full" src="{{ asset('images/sujit.png') }}" alt="Sujit Bhattarai">
+                    <div>
+                      <h3 class="text-xl font-semibold leading-7 tracking-tight">Sujit Bhattarai</h3>
+                      {{-- <p class="text-sm font-semibold leading-6 text-indigo-600">Co-Founder / CEO</p> --}}
+                    </div>
+                  </div>
+                  <p class="text-gray-600 h-max  overflow-hidden text-ellipsis max-h-12 md:max-h-12 lg:max-h-24">
+                    Ensured that the web application is reliable, performs well, and meets proposed expectations,
+                    ultimately
+                    contributing to the success of the project.
+                  </p>
+
+                </div>
+              </div>
+            </a>
+          </li>
+
+          <!-- More people... -->
+        </ul>
+      </div>
+    </div>
+  </section>
+  {{-- Contact us --}}
+  <span id="contact"></span>
+  <section class="w-full py-12 md:py-24 lg:py-32">
+    <div class="container px-4 md:px-6">
+      <div class="flex flex-col items-center justify-center space-y-4 text-center">
+        <div class="space-y-2">
+          <h2 class="text-3xl font-bold tracking-tighter sm:text-5xl">Contact Us</h2>
+          <p class="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">Have
+            a question or need help?</p>
         </div>
-    </section>
+        <div class="mx-auto w-full max-w-sm gap-x-8 grid grid-cols-3">
+          {{-- facebook --}}
+          <a class="grid rounded-full overflow-hidden border-2 hover:bg-green-500 border-spacing-1"
+            href="https://www.facebook.com/SujitBhattarai2000/" target="blank">
+            <img src="{{ asset('images/facebook.png') }}" alt="facebook">
+          </a>
+          {{--linkedin--}}
+          <a class="grid rounded-full overflow-hidden border-2 hover:bg-green-500 border-spacing-1"
+            href="https://www.linkedin.com/in/sujit-bhattarai-617b28237" target="blank">
+            <img src="{{ asset('images/linkedin.png') }}" alt="linkedin">
+          </a>
+          {{--github--}}
+          <a class="grid rounded-full overflow-hidden border-2 hover:bg-green-500 border-spacing-1"
+            href="https://github.com/suzt-0" target="blank">
+            <img src="{{ asset('images/github.png') }}" alt="github">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  {{-- footer  --}}
+  @include('components.footer')
 </body>
 
 </html>
