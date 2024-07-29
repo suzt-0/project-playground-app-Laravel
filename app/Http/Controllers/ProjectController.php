@@ -157,4 +157,19 @@ class ProjectController extends Controller
             return redirect()->back()->with('error', 'Failed to delete project: ' . $e->getMessage());
         }
     }
+
+    public function removeMember(ProjectMember $projectMember)
+    {
+
+        // Gate::authorize('update', $project);
+        try {
+            $projectMember->tasks()->delete();
+            $projectMember->delete();
+            return redirect()->back()->with('success', 'member removed sucessfully');  
+        } catch (\Exception $e) {
+
+            // Handle failure
+            return redirect()->back()->with('error', 'Failed to remove member: ' . $e->getMessage());
+        }
+    }
 }
