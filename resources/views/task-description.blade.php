@@ -101,7 +101,36 @@
               </div>
             </div>
             <div>
-              <div class="items-center p-3 flex justify-end">
+              <div class="items-center p-3 flex justify-end gap-2">
+                {{-- Delete button --}}
+
+                <form action="{{route('tasks.destroy', $task->id)}}" method="POST">@method('DELETE') @csrf
+                  <button type="submit"
+                    class="border p-1 border-slate-300 bg-slate-200 hover:bg-rose-700 hover:text-rose-200  inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium  focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2">
+                    <svg viewBox="0 0 24 24" width="30" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g id="SVGRepo_bgCarrier" stroke-width=""></g>
+                      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                      <g id="SVGRepo_iconCarrier">
+                        <path d="M10 12V17" stroke="currentcolor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round">
+                        </path>
+                        <path d="M14 12V17" stroke="currentcolor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round">
+                        </path>
+                        <path d="M4 7H20" stroke="currentcolor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round">
+                        </path>
+                        <path d="M6 10V18C6 19.6569 7.34315 21 9 21H15C16.6569 21 18 19.6569 18 18V10"
+                          stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z"
+                          stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </g>
+                    </svg>
+                    Delete
+                  </button>
+                </form>
+
+                {{-- Edit button --}}
                 <a href="{{ route('tasks.edit', $task->id) }}"
                   class="border p-1 border-slate-300 bg-slate-200 hover:bg-slate-700 hover:text-slate-200 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2">
                   <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
