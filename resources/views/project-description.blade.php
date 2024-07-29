@@ -279,9 +279,7 @@
         </div>
         @if (Auth::user()->id == $project->admin_id)
         <div class="p-6 flex items-center justify-end">
-          <form action="{{ route('tasks.setProjectId')}}" method="POST">
-            @csrf
-            <input type="hidden" name="project_id" id="project_id" value="{{ $project->id }}">
+          <a href="{{ route('tasks.create', $project->id) }}">
             <button type="submit"
               class="border border-slate-300 bg-slate-200 hover:bg-green-700 hover:text-slate-200  inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium  focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2">
               <svg data-id="30" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -292,7 +290,7 @@
               </svg>
               Add Task
             </button>
-          </form>
+          </a>
         </div>
         @endif
       </div>
