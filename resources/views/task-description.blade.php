@@ -152,19 +152,117 @@
       {{-- Task Card Ends Here --}}
 
       {{-- comment section starts here --}}
-      <div class="grid grid-rows-2 gap-y-2 ">
-        
+      <div class="grid col-span-4 xl:col-span-2 grid-rows-2 gap-y-2 ">
+
         {{-- suggestions here --}}
-        <div class="rounded-lg border bg-slate-50">
-          <div class="flex flex-col space-y-1.5 p-5">
-            <h3 class="whitespace-nowrap text-3xl font-semibold leading-none tracking-tight">Suggestions
+        <div class="rounded-lg border bg-slate-50 ">
+          <div class="space-y-1 p-4">
+            <div class="grid grid-cols-2">
+              <h3 class="whitespace-nowrap text-3xl font-semibold leading-none tracking-tight">Suggestions</h3>
+            </div>
+            <div class="p-1 grid grid-cols-1 gap-4">
+              <div class="grid font-normal text-slate-600 rounded gap-4 p-2 max-h-56 overflow-y-auto">
+                @forelse ($suggestions as $suggestion)
+                <div class="flex p-3 text-slate-600 border rounded items-center ">
+                  <div class="grid grid-cols-1 gap-1">
+                    <div class="text-lg italic first-letter:capitalize">{{$suggestion->comment_text}}</div>
+                  </div>
+                </div>
+                @empty
+                <div class="flex p-1 items-center gap-4">
+                  <div class="grid gap-1">
+                    <div class="text-lg italic">No Suggestions Yet</div>
+                  </div>
+                </div>
+                @endforelse
+              </div>
+              @if (Auth::user()->id == $task->project->admin_id)
+                {{-- suggestion starts --}}
+                <div>
+                  <form class="grid grid-cols-3 gap-x-3" method="POST" action="{{route('comments.store',$task->id)}}">
+                    @csrf
+                    <input type="text" name="user_id" value="{{Auth::user()->id}}" hidden>
+                    <select name="comment_type" hidden>
+                      <option value="suggestion" selected hidden></option>
+                    </select>
+                    <input name="comment_text"
+                      class="col-span-2 bg-slate-200 border border-slate-500 outline-0 p-2 w-full rounded-lg italic"
+                      placeholder="Add new suggestion here" type="text">
+                    <button class="ml-2 w-fit border rounded-lg p-3 bg-slate-700 text-slate-200 grid grid-cols-3"
+                      type="submit" class="p-2">
+                      <div class="w-fit">
+                        <svg aria-hidden="true" fill="none" viewbox="0 0 24 24" stroke="currentColor"
+                          class="flex-shrink-0 h-6 w-6 text-inherit -ml-1 -mr-1 col-span-1">
+                          <path stroke-width="2"
+                            d="M2.5 12a9.5 9.5 0 1119 0 9.5 9.5 0 01-19 0zM12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zm0 13a2 2 0 100-4 2 2 0 000 4z">
+                          </path>
+                        </svg>
+                      </div>
+                      <div class="col-span-2">
+                        Suggest
+                      </div>
+                    </button>
+                  </form>
+                </div>
+                {{-- suggestions ends --}}
+              @endif
+            </div>
           </div>
         </div>
 
         {{-- issues here --}}
         <div class="rounded-lg border bg-slate-50">
-          <div class="flex flex-col space-y-1.5 p-5">
-            <h3 class="whitespace-nowrap text-3xl font-semibold leading-none tracking-tight">Issues
+          <div class="space-y-1 p-4">
+            <div class="grid grid-cols-2">
+              <h3 class="whitespace-nowrap text-3xl font-semibold leading-none tracking-tight">Issues</h3>
+            </div>
+            <div class="p-1 grid grid-cols-1 gap-4">
+              <div class="grid font-normal text-slate-600 rounded gap-4 p-2 max-h-56 overflow-y-auto">
+                @forelse ($issues as $issue)
+                <div class="flex p-3 text-slate-600 border rounded items-center ">
+                  <div class="grid grid-cols-1 gap-1">
+                    <div class="text-lg italic first-letter:capitalize"> {{$issue->comment_text}} </div>
+                  </div>
+                </div>
+                @empty
+                <div class="flex p-1 items-center gap-4">
+                  <div class="grid gap-1">
+                    <div class="text-lg">No issues Yet</div>
+                  </div>
+                </div>
+                @endforelse
+              </div>
+              @if (Auth::user()->id == $task->user_id)
+              {{-- raise issue starts --}}
+              <div>
+                <form class="grid grid-cols-3 gap-x-3" method="POST" action="{{route('comments.store',$task->id)}}">
+                  @csrf
+                  <input type="text" name="user_id" value="{{Auth::user()->id}}" hidden>
+                  <select name="comment_type" hidden>
+                    <option value="issue" selected hidden></option>
+                  </select>
+                  <input name="comment_text"
+                    class="col-span-2 bg-slate-200 border border-slate-500 outline-0 p-2 w-full rounded-lg italic"
+                    placeholder="Add new issue here" type="text">
+                  <button class="ml-2 w-fit border rounded-lg p-3 bg-slate-700 text-slate-200 grid grid-cols-3"
+                    type="submit" class="p-2">
+                    <div class="w-fit">
+                      <svg aria-hidden="true" fill="none" viewbox="0 0 24 24" stroke="currentColor"
+                        class="flex-shrink-0 h-6 w-6 text-inherit -ml-1 -mr-1 col-span-1">
+                        <path stroke-width="2"
+                          d="M2.5 12a9.5 9.5 0 1119 0 9.5 9.5 0 01-19 0zM12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zm0 13a2 2 0 100-4 2 2 0 000 4z">
+                        </path>
+                      </svg>
+                    </div>
+                    <div class="col-span-2">
+                      Raise Issue
+                    </div>
+                  </button>
+                </form>
+              </div>
+              {{-- raise issue ends --}}
+              @endif
+            </div>
           </div>
         </div>
       </div>
