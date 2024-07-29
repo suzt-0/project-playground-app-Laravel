@@ -16,10 +16,9 @@
       <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center p-1">
         <a href="{{route('dashboard')}}"
           class="mr-4 p-2  hover:text-gray-900 hover:underline hover:decoration-gray-900 ">Dashboard</a>
-        <a href="{{route('home')}}"
-          class="mr-4 p-2  hover:text-gray-900 hover:underline hover:decoration-gray-900">About</a>
-        <a href="{{route('home')}}"
-          class="mr-4 p-2  hover:text-gray-900 hover:underline hover:decoration-gray-900">Contacts</a>
+        <a href="{{route('show.user',Auth::user()->id)}}"
+          class="mr-4 p-2  hover:text-gray-900 hover:underline hover:decoration-gray-900">Profile</a>
+       
         {{-- <button
           class="relative p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:bg-gray-100 focus:text-gray-600 rounded-full">
           <span class="sr-only">Notifications</span>
