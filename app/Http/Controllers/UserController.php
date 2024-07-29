@@ -34,16 +34,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $data =$request->validate([
+        $data = $request->validate([
             'name' => 'required|string',
             'email' => 'required|string',
             'password' => 'required|string|confirmed',
         ]);
-            $user = User::create($data);
+        $user = User::create($data);
 
-            if($user){
-                return redirect()->route('login')->with('success', 'User data added successfully!');
-            }
+        if ($user) {
+            return redirect()->route('login')->with('success', 'User data added successfully!');
+        }
         //$request->validate([
         //     'name' => 'required|string',
         //     'email' => 'required|string',
@@ -58,14 +58,18 @@ class UserController extends Controller
     }
 
 
-    
+
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(User $user)
     {
-        // return view('show.user', compact(''))
+        $myProject = $user->myProject()->count();
+        $completedProject = $user->myProject()->whereStatus('Completed')->count();
+        $failedProject = $user->myProject()->whereStatus('Dropped')->count();
+        $joinedProject = $user->joinedProject()->count();
+        return view('user-profile', compact('user','myProject','completedProject','failedProject','joinedProject'));
     }
 
     /**
@@ -109,21 +113,19 @@ class UserController extends Controller
             'password' => 'required',
         ]);
 
-        // $credentials = $request->only('email', 'password');
-
         if (Auth::attempt($credentials, $request->remember_me)) {
-            // $request->session()->regenerate();
-
+            notify()->success('Logged in Sucessfully!!', 'Welcome');
             return redirect()->route('dashboard');
         }
-
+        notify()->error('Enter valid credentials', 'Login Failed');
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ]);
     }
 
 
-    public function logout() {
+    public function logout()
+    {
         Auth::logout();
         return redirect()->route('login');
     }
