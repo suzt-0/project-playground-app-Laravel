@@ -29,10 +29,19 @@ Route::middleware('guest')->group(function () {
 });
 //grouped middleware for authenticated users
 Route::middleware('auth')->group(function () {
+    //routes defined for authenticated access to browser
 
     Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+    Route::get('/users/{user}', [UserController::class, 'show'])->name('show.user');
 
-    //routes defined for authenticated access to browser
+    Route::post('tasks/setProjectId', [TaskController::class, 'setProjectId'])->name('tasks.setProjectId');
+    Route::get('/projects/{project}/tasks/create', [TaskController::class, 'create'])->name('tasks.create');
+    Route::post('/projects/{project}/tasks', [TaskController::class, 'store'])->name('tasks.store');
+    Route::get('/tasks/{task}/show', [TaskController::class, 'show'])->name('tasks.show');
+    Route::get('/tasks/{task}/edit', [TaskController::class, 'edit'])->name('tasks.edit');
+    Route::patch('/tasks/{task}/update', [TaskController::class, 'update'])->name('tasks.update');
+    Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy');
+    Route::post('/tasks/{task}/comments', [TaskController::class, 'commentStore'])->name('comments.store');
 
     // Route::get('/dashboard', [UserController::class, 'dashboardPage'])->name('dashboard');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -41,9 +50,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/joined/projects', [ProjectController::class, 'joined'])->name('projects.joined');
     Route::get('/Completed/projects', [ProjectController::class, 'completed'])->name('projects.completed');
     Route::get('/failed/projects', [ProjectController::class, 'failed'])->name('projects.failed');
+    Route::delete('/project-members/{projectMember}', [ProjectController::class, 'removeMember'])->name('members.remove');
     
-    Route::post('tasks/setProjectId', [TaskController::class, 'setProjectId'])->name('tasks.setProjectId');
-    Route::get('/tasks/create/{project_id}', [TaskController::class, 'create'])->name('tasks.create');
 
     Route::resource('projects', ProjectController::class);
     Route::resource('joinProjects', ProjectMemberController::class);
@@ -59,41 +67,17 @@ Route::get('/test', function(){
     return view('test');
 })->name('test');
 
-Route::get('/about', function(){
-    return view('about');
-})->name('about');
-
-Route::get('/contact', function(){
-    return view('contact');
-})->name('contact');
-
-Route::get('/user-manual', function(){
-    return view('user-manual');
-})->name('user-manual');
-
-// Route::get('/project', function(){
-//     return view('project');
-// })->name('project');
-
-Route::get('/project_admin', function(){
-    return view('project_admin');
-})->name('project_admin');
-
-Route::get('/project_member', function(){
-    return view('project_member');
-})->name('project_member');
-
 Route::get('/task', function(){
-    return view('task');
+    return view('tasks');
 })->name('task');
 
 // Route::get('/my-projects', function(){
 //     return view('my-projects');
 // })->name('my-projects');
  
-Route::get('/join-projects', function(){
-    return view('join-projects');
-})->name('join-projects');
+// Route::get('/join-projects', function(){
+//     return view('join-projects');
+// })->name('join-projects');
  
 // Route::get('/create-project', function(){
 //     return view('create-project');
