@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Projects</title>
+    @notifyCss
     @vite('resources/css/app.css')
 </head>
 
@@ -96,6 +97,9 @@
     @endif
 
     @include('components.footer')
+
+    <x-notify::notify />
+    @notifyJs
 </body>
 
 </html>
