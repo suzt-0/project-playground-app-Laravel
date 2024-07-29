@@ -28,11 +28,17 @@ class Project extends Model
 
     public function admin() :BelongsTo
     {
-        return $this->belongsTo(User::class);//admin
-    }
+        return $this->belongsTo(User::class, 'admin_id', 'id');//admin
+    } 
     public function users() : BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'project_members', 'project_id', 'user_id');
+        return $this->belongsToMany(User::class, 'project_members', 'project_id', 'user_id')->withPivot('id');
     }
     
+    public function isMember(User $user): bool
+    {
+        return $this->hasOneThrough(User::class, ProjectMember::class, 'project_id', 'id')
+                    ->where('user_id', $user->id)
+                    ->exists();
+    }
 }
