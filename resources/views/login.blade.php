@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
+    @notifyCss
     @vite('resources/css/app.css')
 </head>
 
@@ -67,7 +68,8 @@
             </div>
         </div>
     </div>
-
+    <x-notify::notify />
+    @notifyJs
 </body>
 
 </html>

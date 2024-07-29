@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>TEST-Project Edit</title>
+    @notifyCss
     @vite('resources/css/app.css')
 </head>
 
@@ -37,9 +38,15 @@
 
 
     {{-- back links starts--}}
-    <div>
-        dashboard/
-        {{$task->name}}/..
+    <div class="">
+        <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">
+            {{-- <a href="{{route('comments.show', $task->comment->id)}}">Dashboard</a>/ --}}
+            <a href="{{route('dashboard')}}">Dashboard</a>/
+            <a href="">My Projects</a>/
+            <a href="">{Project-name}</a>/
+            <a href="">Tasks</a>/..
+        </h3>
+
     </div>
     {{-- back links ends--}}
     <div class="mx-14 mt-4 mb-40">
@@ -149,7 +156,8 @@
     {{-- footer starts --}}
     @include('components.footer')
     {{-- footer ends --}}
-
+    <x-notify::notify />
+  @notifyJs
 </body>
 
 </html>

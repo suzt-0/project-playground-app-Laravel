@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Create-task</title>
   {{-- <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script> --}}
+  @notifyCss
   @vite('resources/css/app.css')
   @vite('resources/css/buttonHover.css')
 </head>
@@ -31,9 +32,9 @@
               <p class="text-sm text-muted-foreground">Fill out the form to create and assign a new task.</p>
             </div>
           </div>
-          <form action="{{route('tasks.store')}}" method="POST">
+          <form action="{{ route('tasks.store', $project->id) }}" method="POST">
             @csrf
-            <input type="hidden" name="project_id" value="{{$project_id }}">
+            {{-- <input type="hidden" name="project_id" value="{{$project_id }}"> --}}
             <div class="p-6 grid gap-4">
               <div class="grid gap-4 md:grid-cols-2 ">
                 {{-- task name --}}
@@ -160,6 +161,8 @@
         </div>
         @endif
   </div>
+  <x-notify::notify />
+  @notifyJs
 </body>
 
 </html>

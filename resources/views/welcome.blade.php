@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
   <title>Welcome to PMS</title>
+  @notifyCss
   @vite('resources/css/app.css')
 </head>
 
@@ -206,5 +207,6 @@
   {{-- footer  --}}
   @include('components.footer')
 </body>
-
+<x-notify::notify />
+  @notifyJs
 </html>
