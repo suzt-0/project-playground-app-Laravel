@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\ProjectMember;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Validator;
 
 class ProjectController extends Controller
@@ -14,11 +16,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-
         $user = Auth::user();
         $Projects = $user->myProject;
         return view('my-projects', compact('Projects'));
-
     }
     public function joined(){
         $user =Auth::user();
@@ -33,7 +33,6 @@ class ProjectController extends Controller
     public function failed(){
         $user =Auth::user();
         $Projects = $user->myProject()->whereStatus('Dropped')->get();
-        // $projects = $user->myProjects()->where('status', 'Dropped')->get();
         return view('my-projects', compact('Projects'));
     }
 
@@ -80,10 +79,12 @@ class ProjectController extends Controller
             $project->save();
     
             // Handle successful creation
+            notify()->success('Project created successfully!');
             return redirect()->route('projects.create')->with('success', 'Project created successfully!');
         } catch (\Exception $e) {
 
             // Handle failure
+            notify()->error('Failed to create project: ' . $e->getMessage());
             return redirect()->back()->with('error', 'Failed to create project: ' . $e->getMessage())->withInput();
         }
     }
@@ -93,8 +94,10 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
+        // Gate::authorize('view', $project);
         $members =$project->users;
         $tasks =$project->tasks;
+        
         return view('project-description', compact('project','members','tasks'));
     }
 
@@ -103,6 +106,7 @@ class ProjectController extends Controller
      */
    public function edit(Project $project)
     {
+        Gate::authorize('update', $project);
         return view('project-edit', compact('project'));
     }
 
@@ -111,6 +115,7 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
+        Gate::authorize('update', $project);
         // Validate the request data
         $validator = Validator::make($request->all(),[
             'name' => 'required|string|max:255',
@@ -148,9 +153,11 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        Gate::authorize('update', $project);
         try {
             $project->delete();
             $project->projectmember()->delete();
+            return redirect()->route('index')->with('success', 'Project deleted successfully!');  
         } catch (\Exception $e) {
 
             // Handle failure
