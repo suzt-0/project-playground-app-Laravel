@@ -209,6 +209,7 @@
         </div>
         <div class="p-6 grid gap-4">
           <div class="relative w-full overflow-auto">
+            @if(isset($tasks) && $tasks->count() > 0)
             <table class="w-full text-sm">
               <thead class="">
                 <tr class="border-b grid grid-cols-2 md:grid-cols-4 transition-colors">
@@ -271,6 +272,9 @@
                 {{-- task list ends --}}
               </tbody>
             </table>
+            @else
+            <h1 class="text-lg"> No tasks found</h1>
+            @endif
           </div>
         </div>
         @if (Auth::user()->id == $project->admin_id)
