@@ -97,5 +97,5 @@ class ProjectMemberController extends Controller
     public function destroy(ProjectMember $projectMember)
     {
         $projectMember->delete();
-    }
+    } 
 }
