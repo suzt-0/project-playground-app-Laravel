@@ -144,6 +144,19 @@
                 <div class="font-medium first-letter:capitalize">{{ $member->name }}</div>
                 <div class="text-sm text-muted-foreground">{{ $member->email }}</div>
               </div>
+              @if (Auth::user()->id == $project->admin_id)
+                <div class="">
+                  <div class="items-center flex justify-end">
+                    <form action="{{route('members.remove',$member->pivot->id)}}" method="POST">
+                      @method('DELETE') @csrf
+                      <button type="submit"
+                        class="border p-1 border-slate-300 bg-slate-200 hover:bg-rose-700 hover:text-rose-200  inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium  focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2">
+                        Remove
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              @endif
             </div>
             @empty
             <div class="flex p-1 items-center gap-4">
