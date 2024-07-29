@@ -35,14 +35,11 @@
   >
     <div class="card"
     style="
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      display: grid;
     "
     >
       <div 
-      style="padding: 20px;"
+      style="padding: 10px;"
       class="title">
         <h1>Invitation to join</h1>
       </div>
@@ -60,7 +57,7 @@
             font-size: 25px;
             cursor:text;
             ">
-            $projectName
+            {{$projectName}}
           </span>
         </div>
         <div class="pid">Project Id:
@@ -73,7 +70,7 @@
             font-size: 25px;
             cursor:text;
             ">
-            $projectId
+           {{ $projectId}}
           </span>
         </div>
       </div>
