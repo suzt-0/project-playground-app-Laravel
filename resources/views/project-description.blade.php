@@ -56,24 +56,10 @@
         </svg>
         Edit
       </a>
-      {{-- <button type="submit"
-        class="border p-1 border-slate-300 bg-slate-200 hover:bg-slate-700 hover:text-slate-200  inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium  focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2">
-        <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-          <g id="SVGRepo_iconCarrier">
-            <path fill-rule="evenodd" clip-rule="evenodd"
-              d="M8.56078 20.2501L20.5608 8.25011L15.7501 3.43945L3.75012 15.4395V20.2501H8.56078ZM15.7501 5.56077L18.4395 8.25011L16.5001 10.1895L13.8108 7.50013L15.7501 5.56077ZM12.7501 8.56079L15.4395 11.2501L7.93946 18.7501H5.25012L5.25012 16.0608L12.7501 8.56079Z"
-              fill="currentcolor"></path>
-          </g>
-        </svg>
-        Edit
-      </button> --}}
     </div>
-
   </div>
   @endif
-  <main class="flex-1 flex flex-col text-slate-700 gap-4  md:gap-8 md:p-10">
+  <main class="flex-1 flex flex-col text-slate-700 gap-4 p-5 md:gap-8 md:p-5">
     <div class="max-w-6xl w-full mx-auto grid md:grid-cols-2 gap-8">
       {{-- Project Card Starts --}}
       <div class="rounded-lg border bg-slate-50 shadow-sm">
@@ -132,8 +118,10 @@
       {{-- Team Members Card Starts --}}
       <div class="rounded-lg border bg-slate-50 shadow-sm">
         <div class="flex flex-col space-y-1.5 p-6">
-          <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">Team Members
-          </h3>
+          <div class="grid grid-cols-2">
+            <div>
+              <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">Team Members
+              </h3>
               <p class="text-sm ">The team working on the project.</p>
             </div>
             <div>
@@ -170,10 +158,10 @@
           <div class="grid border rounded p-3 gap-4  max-h-80 overflow-y-auto">
             {{-- member list Starts --}}
             @forelse ($members as $member)
-            <div class="flex p-1 items-center gap-4">
-              <div class="grid gap-1">
+            <div class="flex justify-between p-1 items-center gap-4">
+              <div class="grid col-span-5 gap-1">
                 <div class="font-medium first-letter:capitalize">{{ $member->name }}</div>
-                <div class="text-sm text-muted-foreground">{{ $member->email }}</div>
+                <div class="text-sm ">{{ $member->email }}</div>
               </div>
               @if (Auth::user()->id == $project->admin_id)
                 <div class="">
@@ -204,7 +192,7 @@
       <div class="rounded-lg border bg-slate-50 shadow-sm">
         <div class="flex flex-col space-y-1.5 p-6">
           <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">Tasks</h3>
-          <p class="text-sm text-muted-foreground">The tasks that need to be completed for this project.
+          <p class="text-sm ">The tasks that need to be completed for this project.
           </p>
         </div>
         <div class="p-6 grid gap-4">
@@ -225,7 +213,6 @@
               </thead>
               <tbody class="">
                 {{-- task list starts --}}
-
                 @foreach ($tasks as $task)
                 <tr
                   class="border-b grid grid-cols-2 md:grid-cols-4 transition-colors hover:bg-slate-200 data-[state=selected]:bg-muted">
@@ -236,7 +223,7 @@
                       <div class="font-medium ">{{$task->name}}</div>
 
                       {{-- task description --}}
-                      <div class="text-sm text-muted-foreground">{{$task->description}}</div>
+                      <div class="text-sm ">{{$task->description}}</div>
                     </a>
                   </td>
                   {{-- assigned to --}}
