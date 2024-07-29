@@ -133,7 +133,37 @@
         <div class="flex flex-col space-y-1.5 p-6">
           <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">Team Members
           </h3>
-          <p class="text-sm text-muted-foreground">The team working on the project.</p>
+              <p class="text-sm ">The team working on the project.</p>
+            </div>
+            <div>
+              {{-- Invite button --}}
+              @if (Auth::user()->id == $project->admin_id)
+              <div class="p-2 flex items-center justify-end">
+                <a href="{{ route('mail.invite', $project->id) }}">
+                  <button type="submit"
+                    class="border border-slate-300 bg-slate-200 hover:bg-green-700 hover:text-slate-200  inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium  focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2">
+                    <svg data-id="30" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="w-4 h-4 mr-2">
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5v14"></path>
+                    </svg>
+                    Invite
+                  </button>
+                </a>
+              </div>
+              @endif
+            </div>
+          </div>
+          @if (Auth::user()->id == $project->admin_id)
+          <p class="text-md italic">
+            Share this project id to project members <br>
+            {
+            <span class="text-sm italic">Project name: {{$project->name}}</span>
+            <span class="text-sm italic">Project id: {{$project->id}}</span>
+            }
+          </p>
+          @endif
         </div>
         <div class="p-6 grid gap-4">
           <div class="grid border rounded p-3 gap-4  max-h-80 overflow-y-auto">
