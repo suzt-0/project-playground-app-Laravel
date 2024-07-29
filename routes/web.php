@@ -46,7 +46,8 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('projects', ProjectController::class);
     Route::resource('joinProjects', ProjectMemberController::class);
-    Route::resource('tasks', TaskController::class);
+    Route::get('/invitation/{project}',[EmailController::class, 'emailForm'])->name('mail.invite');
+    Route::post('/send-mail/{project}', [EmailController::class, 'sendEmail'])->name('mail.send');
 
 });
 
