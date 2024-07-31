@@ -80,7 +80,7 @@ class ProjectController extends Controller
     
             // Handle successful creation
             notify()->success('Project created successfully!');
-            return redirect()->route('projects.create')->with('success', 'Project created successfully!');
+            return redirect()->route('projects.index')->with('success', 'Project created successfully!');
         } catch (\Exception $e) {
 
             // Handle failure
@@ -140,10 +140,12 @@ class ProjectController extends Controller
             $project->save();
     
             // Handle successful creation
+            notify()->success('Project updated successfully!');
             return redirect()->back()->with('success', 'Project updated successfully!');
         } catch (\Exception $e) {
 
             // Handle failure
+            notify()->error('Failed to update project: ' . $e->getMessage());
             return redirect()->back()->with('error', 'Failed to update project: ' . $e->getMessage())->withInput();
         }
     }
@@ -157,10 +159,12 @@ class ProjectController extends Controller
         try {
             $project->delete();
             $project->projectmember()->delete();
-            return redirect()->route('index')->with('success', 'Project deleted successfully!');  
+            notify()->success('Project deleted successfully!');
+            return redirect()->route('projects.index')->with('success', 'Project deleted successfully!');  
         } catch (\Exception $e) {
 
             // Handle failure
+            notify()->error('Failed to delete project: ' . $e->getMessage());
             return redirect()->back()->with('error', 'Failed to delete project: ' . $e->getMessage());
         }
     }
@@ -172,6 +176,7 @@ class ProjectController extends Controller
         try {
             $projectMember->tasks()->delete();
             $projectMember->delete();
+            notify()->success('Member removed successfully!');
             return redirect()->back()->with('success', 'member removed sucessfully');  
         } catch (\Exception $e) {
 
