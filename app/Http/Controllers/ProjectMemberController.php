@@ -59,6 +59,7 @@ class ProjectMemberController extends Controller
             $projectMember->save();
 
             // Handle successful creation
+            notify()->success('Project member added successfully!');
             return redirect()->route('dashboard')->with('success', 'Project created successfully!');
         } catch (\Exception $e) {
 

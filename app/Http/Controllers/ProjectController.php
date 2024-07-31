@@ -94,7 +94,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        // Gate::authorize('view', $project);
+        Gate::authorize('view', $project);
         $members =$project->users;
         $tasks =$project->tasks;
         

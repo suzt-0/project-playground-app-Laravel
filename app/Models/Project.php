@@ -35,10 +35,14 @@ class Project extends Model
         return $this->belongsToMany(User::class, 'project_members', 'project_id', 'user_id')->withPivot('id');
     }
     
+    // public function isMember(User $user): bool
+    // {
+    //     return $this->hasOneThrough(User::class, ProjectMember::class, 'project_id', 'id')
+    //                 ->where('user_id', $user->id)
+    //                 ->exists();
+    // }
     public function isMember(User $user): bool
     {
-        return $this->hasOneThrough(User::class, ProjectMember::class, 'project_id', 'id')
-                    ->where('user_id', $user->id)
-                    ->exists();
+        return $this->users->contains($user->id);
     }
 }

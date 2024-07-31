@@ -23,10 +23,11 @@ class TaskPolicy
     // /**
     //  * Determine whether the user can view the model.
     //  */
-    // public function view(User $user, Task $task): bool
-    // {
-    //     //
-    // }
+    public function view(User $user, Task $task): bool
+    {
+        $project=$task->project;
+        return $user->id === $project->admin_id || $project->isMember($user);
+    }
 
     // /**
     //  * Determine whether the user can create models.

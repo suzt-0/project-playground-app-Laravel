@@ -98,6 +98,7 @@ class TaskController extends Controller
     public function show(Task $task)
     {
         // dd($task->id);
+        Gate::authorize('view', $task);
         $comments = $task->comment;
         $suggestions = $comments->where('comment_type', 'suggestion');
         $issues = $comments->where('comment_type', 'issue');
@@ -185,6 +186,7 @@ class TaskController extends Controller
         $project = $task->project;
         // Gate::authorize('view', $project);
         // Validate the request data
+        Gate::authorize('view', $task);
         $validator = Validator::make($request->all(), [
             'comment_text' => 'required|string',
             'comment_type' => 'required|string|in:suggestion,issue',
@@ -206,12 +208,12 @@ class TaskController extends Controller
             // add project id here
 
             $comment->save();
-            notify()->success('task sucessfull!!');
+            // notify()->success('task sucessfull!!');
             return redirect()->route('tasks.show', compact('task'));
             // return redirect()->back()->with('success', 'Task created successfully!');
         } catch (\Exception $e) {
             // Handle failure
-            notify()->error('task failed!!');
+            notify()->error('could not add comment');
             return redirect()->back()->with('error', 'Failed to create task: ' . $e->getMessage())->withInput();
         }
 
