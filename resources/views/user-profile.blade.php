@@ -9,15 +9,14 @@
   @notifyCss
   @vite('resources/css/app.css')
 </head>
-
-<body class="bg-slate-100">
+<body class="bg-slate-100 text-slate-800">
   {{-- -- navbar starts -- --}}
   @include('components.navbar')
   {{-- -- navbar ends -- --}}
-  <main class="grid xl:grid-cols-4 m-10 max-w-full gap-8 ">
+  <main class="grid xl:grid-cols-4 m-10 max-w-full gap-8  ">
     {{-- User Profile Card --}}
-    <div class="grid gap-y-4 xl:col-span-3 border p-10  rounded-lg border-slate-300 shadow bg-white ">
-      <div class="text-5xl mb-10">
+    <div class="grid gap-y-4 xl:col-span-3 border p-10  rounded-lg border-slate-300 shadow bg-slate-50 ">
+      <div class="text-5xl font-semibold mb-10">
           User Profile
       </div>
       <div class="flex">
@@ -26,7 +25,8 @@
         </div>
         <div class="p-2">
           <input
-          class="bg-slate-100 outline-none border border-slate-400 rounded-2xl p-2 px-5"
+          class=" cursor-default outline-none border-2 rounded-lg font-serif font-semibold text-slate-700 bg-slate-50 p-2 px-5"
+          disabled
           value="{{$user->name}}"
           type="text">
           {{-- <span class="italic font-mono text-slate-300"> {Can be updated}</span> --}}
@@ -38,7 +38,7 @@
         </div>
         <div class="p-2">
           <input
-          class="bg-slate-100 cursor-default outline-none border border-slate-400 rounded-2xl p-2 px-5"
+          class=" cursor-default outline-none border-2 rounded-lg font-serif font-semibold text-slate-700 bg-slate-50 p-2 px-5"
           disabled 
           value="{{$user->email}}"
           type="text">
@@ -51,7 +51,7 @@
         </div>
         <div class="p-2">
           <input
-          class="bg-slate-100 cursor-default outline-none border border-slate-400 rounded-2xl p-2 px-5"
+          class=" cursor-default outline-none border-2 rounded-lg font-serif font-semibold text-slate-700 bg-slate-50 p-2 px-5"
           disabled 
           value="{{$user->created_at}}"
           type="text">
@@ -63,7 +63,7 @@
         </div>
         <div class="p-2">
           <input
-          class="bg-slate-100 cursor-default outline-none border border-slate-400 rounded-2xl p-2 px-5"
+          class=" cursor-default outline-none border-2 rounded-lg font-serif font-semibold text-slate-700 bg-slate-50 p-2 px-5"
           disabled 
           value="{{$user->updated_at}}"
           type="text">
@@ -86,10 +86,10 @@
       </div> --}}
     </div>
     {{-- User History Card --}}
-    <div class=" xl:col-span-1 border p-10 rounded-lg border-slate-300 shadow bg-white grid gap-y-5 text-lg ">
-      <div class="text-xl">User History</div>
+    <div class=" xl:col-span-1 border p-10 rounded-lg border-slate-300 shadow bg-slate-50 grid gap-y-5 text-lg ">
+      <div class="text-xl font-semibold">User History</div>
       {{-- Project Created  --}}
-      <div class="border p-2 rounded-lg bg-slate-300 border-slate-400 flex flex-col items-center">
+      <div class="border p-2 rounded-lg bg-slate-700 border-slate-400 text-slate-100 flex flex-col items-center">
         <div>
           Projects Created
         </div>
@@ -98,7 +98,7 @@
         </div>
       </div>
       {{-- Joined Projects  --}}
-      <div class="border p-2 rounded-lg bg-slate-300 border-slate-400 flex flex-col items-center">
+      <div class="border p-2 rounded-lg bg-slate-700 border-slate-400 text-slate-100 flex flex-col items-center">
         <div>
           Joined Projects
         </div>
@@ -107,7 +107,7 @@
         </div>
       </div>
       {{-- Completed Projects --}}
-      <div class="border p-2 rounded-lg bg-slate-300 border-slate-400 flex flex-col items-center">
+      <div class="border p-2 rounded-lg bg-slate-700 border-slate-400 text-slate-100 flex flex-col items-center">
         <div>
           Completed Projects
         </div>
@@ -116,7 +116,7 @@
         </div>
       </div>
       {{-- Failed Projects --}}
-      <div class="border p-2 rounded-lg bg-slate-300 border-slate-400 flex flex-col items-center">
+      <div class="border p-2 rounded-lg bg-slate-700 border-slate-400 text-slate-100 flex flex-col items-center">
         <div>
           Failed Projects
         </div>

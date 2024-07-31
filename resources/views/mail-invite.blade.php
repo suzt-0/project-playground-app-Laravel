@@ -36,7 +36,7 @@
                                     Email
                                 </label>
                                 <input type="email"
-                                    class="flex w-full rounded-md border border-slate-400 hover:placeholder-slate-700 px-3 py-2 text-sm"
+                                    class="flex w-full rounded-md border border-slate-400 hover:placeholder-slate-700 outline-none focus-within:border-2 text-slate-800 px-3 py-2 text-sm"
                                     id="email" name="email" placeholder="Enter email to invite" />
                             </div>
                         </div>

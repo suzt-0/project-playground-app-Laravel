@@ -10,7 +10,7 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="bg-emerald-50 text-slate-800 ">
+<body class="bg-slate-100 text-slate-800 ">
     {{-- navbar starts here --}}
     @include('components.navbar-basic')
     {{-- navbar ends here--}}
@@ -31,26 +31,26 @@
                         <label for="email" class="block text-sm font-medium leading-6">Email address</label>
                         <div class="mt-2">
                             <input id="email" name="email" type="email" autocomplete="email" required
-                                class="block w-full rounded-md border-0 py-2 px-3 shadow-sm ring-1 ring-inset ring-slate-400 placeholder:text-gray-400 focus:outline-slate-600 focus:ring-slate-600 sm:text-sm sm:leading-6">
+                                class="block w-full rounded-md py-2 px-3 shadow-sm border focus-within:border-slate-400 placeholder:text-gray-400 outline-none border-slate-300  sm:text-sm sm:leading-6">
                         </div>
                     </div>
     
                     <div>
                         <div class="flex items-center justify-between">
                             <label for="password" class="block text-sm font-medium leading-6">Password</label>
-                            <div class="text-sm">
+                            {{-- <div class="text-sm">
                                 <a href="#" class="font-semibold text-slate-600 hover:text-blue-600">Forgot password?</a>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="mt-2">
                             <input id="password" name="password" type="password" autocomplete="current-password" required
-                                class="block w-full rounded-md border-0 py-2 px-3  shadow-sm ring-1 ring-inset ring-slate-400 placeholder:text-gray-400 focus:outline-slate-600 focus:ring-slate-600 sm:text-sm sm:leading-6">
+                                class="block w-full rounded-md py-2 px-3 shadow-sm border focus-within:border-slate-400 placeholder:text-gray-400 outline-none border-slate-300  focus:ring-slate-600 sm:text-sm sm:leading-6">
                         </div>
-                        <div class="mt-2 flex items-center gap-1">
+                        {{-- <div class="mt-2 flex items-center gap-1">
                             <input  type="checkbox" id="remember_me" name="remember_me"
-                                class="px-3  shadow-sm ring-1 ring-inset ring-slate-400 placeholder:text-gray-400 focus:outline-slate-600 focus:ring-slate-600 sm:text-sm sm:leading-6">
+                                class="px-3  shadow-sm placeholder:text-gray-400 outline-none border-slate-400  focus:ring-slate-600 sm:text-sm sm:leading-6">
                                 <label for="remember_me">Remember me</label>
-                        </div>
+                        </div> --}}
                     </div>
     
                     <div>

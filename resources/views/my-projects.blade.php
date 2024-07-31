@@ -10,7 +10,7 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="bg-green-50 text-slate-900 ">
+<body class="bg-slate-50 text-slate-800 ">
     {{-- navbar starts here --}}
     @include('components.navbar')
     {{-- navbar ends here --}}
@@ -23,10 +23,10 @@
     <div class="m-4 p-4 rounded-lg bg-slate-200 border-slate-400 shadow-lg">
 
         <div class="flex justify-between">
-            <h2 class="text-2xl font-bold mb-5 md:mb-10 lg:mb-20">Projects</h2>
+            <h2 class="text-3xl font-semibold mb-5 md:mb-10 lg:mb-20">Projects</h2>
             @if($isAdminForAnyProject)
             <a href="{{route('projects.create')}}"
-                class="border border-slate-700 text-slate-400 bg-slate-700 hover:bg-slate-200 hover:text-slate-700  inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium  focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2">
+                class="border text-slate-200 bg-slate-700 hover:bg-green-700 hover:text-slate-100 transition-colors inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium h-10 px-4 py-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="w-4 h-4 mr-2">
@@ -39,11 +39,11 @@
         </div>
 
         <div class="grid m-2 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            @foreach ($Projects as $project)
+            @forelse ($Projects as $project)
             <a href="{{route('projects.show', $project->id)}}">
                 <div class="mx-auto my-auto ">
                     <div
-                        class="rounded-lg w-full overflow-hidden bg-slate-100 shadow-lg transition-all hover:scale-[1.02]">
+                        class="rounded-lg w-full overflow-hidden bg-slate-100 shadow-lg transition-all hover:scale-[1.05]">
                         <div class="p-6 rounded-lg m-2">
                             <div class="flex flex-col ">
                                 <h2 class="text-xl font-bold mb-2">
@@ -71,11 +71,15 @@
                     </div>
                 </div>
             </a>
-            @endforeach
+            @empty
+            <div class="mx-auto col-span-3 text-slate-500 text-6xl">
+                No Projects To Show (ɔ ͡❛ -͡❛ )ɔ
+            </div>
+            @endforelse
 
         </div>
     </div>
-    @if ($errors->any())
+    {{-- @if ($errors->any())
     <div>
         <ul>
             @foreach ($errors->all() as $error)
@@ -96,7 +100,7 @@
     </div>
     @endif
 
-    @include('components.footer')
+    @include('components.footer') --}}
 
     <x-notify::notify />
     @notifyJs

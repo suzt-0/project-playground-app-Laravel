@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>TEST-Project Description</title>
+  <title>Task Description</title>
   @notifyCss
   @vite('resources/css/app.css')
 </head>
@@ -15,7 +15,7 @@
   @include('components.navbar')
   {{-- navbar ends --}}
 
-  @if ($errors->any())
+  {{-- @if ($errors->any())
   <div>
     <ul>
       @foreach ($errors->all() as $error)
@@ -34,7 +34,7 @@
   <div class="alert alert-success">
     {{ session('success') }}
   </div>
-  @endif
+  @endif --}}
 
   <main class="flex-1 flex flex-col text-slate-700 gap-4 p-4 md:gap-8 md:p-10">
     {{-- back links --}}
@@ -168,9 +168,9 @@
             <div class="p-1 grid grid-cols-1 gap-4">
               <div class="grid font-normal text-slate-600 rounded gap-4 p-2 max-h-56 overflow-y-auto">
                 @forelse ($suggestions as $suggestion)
-                <div class="flex p-3 text-slate-600 border rounded items-center ">
+                <div class="flex p-2 text-slate-600 border rounded items-center ">
                   <div class="grid grid-cols-1 gap-1">
-                    <div class="text-lg italic first-letter:capitalize">{{$suggestion->comment_text}}</div>
+                    <div class="text-sm font-mono italic first-letter:capitalize">{{$suggestion->comment_text}}</div>
                   </div>
                 </div>
                 @empty
@@ -224,9 +224,9 @@
             <div class="p-1 grid grid-cols-1 gap-4">
               <div class="grid font-normal text-slate-600 rounded gap-4 p-2 max-h-56 overflow-y-auto">
                 @forelse ($issues as $issue)
-                <div class="flex p-3 text-slate-600 border rounded items-center ">
+                <div class="flex p-2 text-slate-600 border rounded items-center ">
                   <div class="grid grid-cols-1 gap-1">
-                    <div class="text-lg italic first-letter:capitalize"> {{$issue->comment_text}} </div>
+                    <div class="text-sm font-mono italic first-letter:capitalize"> {{$issue->comment_text}} </div>
                   </div>
                 </div>
                 @empty

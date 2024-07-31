@@ -10,7 +10,7 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="bg-emerald-50 text-slate-800 ">
+<body class="bg-slate-100 text-slate-700 ">
     {{-- navbar starts here --}}
     @include('components.navbar-basic')
     {{-- navbar ends here--}}
@@ -33,14 +33,14 @@
                     <label for="userName" class="block text-sm font-medium leading-6">User Name</label>
                     <div class="mt-2">
                         <input id="name" name="name" type="text" required
-                            class="block w-full rounded-md border-0 py-2 px-3 shadow-sm ring-1 ring-inset ring-slate-400 placeholder:text-gray-400 focus:outline-slate-600 focus:ring-slate-600 sm:text-sm sm:leading-6">
+                            class="block w-full rounded-md py-2 px-3 shadow-sm outline-none placeholder:text-gray-400 border border-slate-300 focus:border-slate-400 focus:ring-slate-600 sm:text-sm sm:leading-6">
                     </div>
                 </div>
                 <div>
                     <label for="email" class="block text-sm font-medium leading-6">Email address</label>
                     <div class="mt-2">
                         <input id="email" name="email" type="email" required
-                            class="block w-full rounded-md border-0 py-2 px-3 shadow-sm ring-1 ring-inset ring-slate-400 placeholder:text-gray-400 focus:outline-slate-600 focus:ring-slate-600 sm:text-sm sm:leading-6">
+                            class="block w-full rounded-md py-2 px-3 shadow-sm outline-none placeholder:text-gray-400 border border-slate-300 focus:border-slate-400 focus:ring-slate-600 sm:text-sm sm:leading-6">
                     </div>
                 </div>
 
@@ -54,7 +54,7 @@
                     </div>
                     <div class="mt-2">
                         <input id="password" name="password" type="password" autocomplete="current-password" required
-                            class="block w-full rounded-md border-0 py-2 px-3  shadow-sm ring-1 ring-inset ring-slate-400 placeholder:text-gray-400 focus:outline-slate-600 focus:ring-slate-600 sm:text-sm sm:leading-6">
+                            class="block w-full rounded-md py-2 px-3  shadow-sm outline-none placeholder:text-gray-400 border border-slate-300 focus:border-slate-400 focus:ring-slate-600 sm:text-sm sm:leading-6">
                     </div>
                 </div>
 
@@ -64,7 +64,7 @@
                     </div>
                     <div class="mt-2">
                         <input id="password" name="password_confirmation" type="password"required
-                            class="block w-full rounded-md border-0 py-2 px-3  shadow-sm ring-1 ring-inset ring-slate-400 placeholder:text-gray-400 focus:outline-slate-600 focus:ring-slate-600 sm:text-sm sm:leading-6">
+                            class="block w-full rounded-md py-2 px-3  shadow-sm outline-none placeholder:text-gray-400 border border-slate-300 focus:border-slate-400 focus:ring-slate-600 sm:text-sm sm:leading-6">
                     </div>
                 </div>
 

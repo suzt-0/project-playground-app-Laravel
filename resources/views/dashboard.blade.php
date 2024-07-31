@@ -11,19 +11,19 @@
   @vite('resources/css/dashboard.css')
 </head>
 
-<body class="bg-emerald-50">
+<body class="bg-slate-100">
   {{-- navbar ends here --}}
   @include('components.navbar')
   {{-- navbar ends here --}}
 
-  <main class=" p-5 space-y-4">
+  <main class=" p-6 space-y-4">
     <div class="flex flex-col space-y-4 md:space-y-0 md:flex-row justify-between">
       <div class="mr-6">
         {{-- <h1 class="text-5xl text-gray-900 font-semibold mb-1.5">{{ Auth::user()->name}}</h1> --}}
         <h1 class="text-5xl first-letter:capitalize text-gray-900 font-semibold mb-1.5">{{ Auth::user()->name }}</h1>
       </div>
       <div class="flex flex-wrap items-start justify-end -mb-3">
-        {{-- join project button  --}}
+        {{-- join project button --}}
         <a href="{{route('joinProjects.create')}}"
           class="inline-flex px-5 py-3 text-slate-600 bg-slate-300 hover:bg-emerald-600 hover:text-slate-200  hover:scale-105 rounded-md mb-3">
           <svg aria-hidden="true" fill="none" viewbox="0 0 24 24" stroke="currentColor"
@@ -33,7 +33,7 @@
           </svg>
           Join Existing Project
         </a>
-        {{-- create project button  --}}
+        {{-- create project button --}}
         <a href="{{route('projects.create')}}"
           class="inline-flex px-5 py-3 text-slate-50 bg-slate-600 hover:text-slate-50 hover:bg-indigo-600  hover:scale-105 rounded-md ml-6 mb-3">
           <svg aria-hidden="true" fill="none" viewbox="0 0 24 24" stroke="currentColor"
@@ -48,9 +48,9 @@
       {{-- My projects --}}
       <a href="{{route('projects.index')}}">
         <div
-          class="flex items-center p-8 bg-slate-300 hover:bg-emerald-600 border border-slate-500 hover:border-emerald-700 hover:text-emerald-100 rounded-lg">
+          class="flex items-center p-8 bg-slate-200 hover:bg-slate-700 border border-slate-300 hover:border-slate-700 hover:text-slate-200 shadow hover:scale-[1.03] transition-all rounded-lg">
           <div
-            class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-emerald-600 bg-emerald-100 rounded-full mr-6">
+            class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-emerald-600 bg-slate-100 rounded-full mr-6">
             <svg aria-hidden="true" fill="none" viewbox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
               <circle xmlns="http://www.w3.org/2000/svg" cx="12" cy="7" r="4" stroke-width="2" stroke-linecap="round" />
               <path xmlns="http://www.w3.org/2000/svg"
@@ -59,7 +59,7 @@
             </svg>
           </div>
           <div>
-            <span class="block text-inherit font-semibold text-lg">My Projects</span>
+            <span class="block text-inherit font-semibold text-xl">My Projects</span>
             <span class="block text-2xl font-bold">{{ $myProject }}</span>
           </div>
         </div>
@@ -68,16 +68,16 @@
       {{-- Join Projetcs --}}
       <a href="{{route('projects.joined')}}">
         <div
-          class="flex items-center p-8 bg-slate-300 hover:bg-emerald-600 border border-slate-500 hover:border-emerald-700 hover:text-emerald-100 rounded-lg">
+          class="flex items-center p-8 bg-slate-200 hover:bg-slate-700 border border-slate-300 hover:border-slate-700 hover:text-slate-200 shadow hover:scale-[1.03] transition-all rounded-lg">
           <div
-            class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-indigo-900 bg-indigo-100 rounded-full mr-6">
+            class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-indigo-900 bg-slate-100 rounded-full mr-6">
             <svg aria-hidden="true" fill="none" viewbox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
             </svg>
           </div>
           <div>
-            <span class="block text-inherit font-semibold text-lg">Joined Projects</span>
+            <span class="block text-inherit font-semibold text-xl">Joined Projects</span>
             <span class="block text-2xl font-bold">{{$joinedProject}}</span>
           </div>
         </div>
@@ -86,9 +86,9 @@
       {{-- Completed Projects --}}
       <a href="{{route('projects.completed')}}">
         <div
-          class="flex items-center p-8 bg-slate-300 hover:bg-emerald-600 border border-slate-500 hover:border-emerald-700 hover:text-emerald-100 rounded-lg">
+          class="flex items-center p-8 bg-slate-200 hover:bg-slate-700 border border-slate-300 hover:border-slate-700 hover:text-slate-200 shadow hover:scale-[1.03] transition-all rounded-lg">
           <div
-            class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-green-800 bg-green-100 rounded-full mr-6">
+            class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-green-800 bg-slate-100 rounded-full mr-6">
             <svg width="50px" height="50px" viewBox="0 -0.5 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M5.5 12.5L10.167 17L19.5 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round" />
@@ -96,7 +96,7 @@
 
           </div>
           <div>
-            <span class="block text-inherit font-semibold text-lg">Completed Projects</span>
+            <span class="block text-inherit font-semibold text-xl">Completed Projects</span>
             <span class="block text-2xl font-bold">{{$completedProject}}</span>
           </div>
         </div>
@@ -105,9 +105,9 @@
       {{-- Failed Projects --}}
       <a href="{{route('projects.failed')}}">
         <div
-          class="flex items-center p-8 bg-slate-300 hover:bg-emerald-600 border border-slate-500 hover:border-emerald-700 hover:text-emerald-100 rounded-lg">
+          class="flex items-center p-8 bg-slate-200 hover:bg-slate-700 border border-slate-300 hover:border-slate-700 hover:text-slate-200 shadow hover:scale-[1.03] transition-all rounded-lg">
           <div
-            class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-rose-800 bg-rose-50 rounded-full mr-6">
+            class="inline-flex flex-shrink-0 items-center justify-center h-16 w-16 text-rose-800 bg-slate-100 rounded-full mr-6">
             <svg width="50px" height="50px" fill="currentColor" stroke="currentColor" viewBox="0 0 48 48"
               xmlns="http://www.w3.org/2000/svg">
               <path
@@ -116,74 +116,79 @@
 
           </div>
           <div>
-            <span class="block text-inherit font-semibold text-lg">Failed Projects</span>
+            <span class="block text-inherit font-semibold text-xl">Failed Projects</span>
             <span class="block text-2xl font-bold">{{$failedProject}}</span>
           </div>
         </div>
       </a>
 
     </section>
-    
-    <section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xl:grid-rows-1 xl:grid-flow-col gap-2">
+
+    <section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xl:grid-rows-1 xl:grid-flow-col gap-3">
       {{-- task list card --}}
-      <div class="row-span-3 col-span-2  bg-white shadow rounded-lg">
+      <div class="row-span-3 col-span-2 bg-slate-50 shadow rounded-lg">
         <div class="flex items-center justify-between px-6 py-5 font-semibold border-b border-gray-100">
           <span>Tasks to do</span>
 
 
         </div>
-        <div class="grid gap-4 mx-1 py-3 h-fit cursor-all-scroll">
-         
-          @foreach ($tasks as $task)
+        <div class="grid gap-4 mx-1 py-3 h-fit max-h-72 overflow-y-auto">
 
-          {{-- <a href="{{route(" view-task")}}"> --}}
-            
-          <a href="{{route('tasks.show',$task->id)}}">
-            <div
-              class="rounded-lg  border-2 cursor-pointer text-slate-600 hover:text-blue-500 hover:border-green-700 hover:bg-slate-50">
-              <div class="flex flex-col space-y-1 p-3">
-                <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">
-                  {{ $task->name }}
-                </h3>
-                <div class="flex items-center gap-2">
-                  <div
-                    class="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
-                    {{ $task->priority }}
-                  </div>
-                  <div class="text-sm font-bold">
-                    Due date: {{ $task->due_date }}
+          @forelse ($tasks as $task)
+
+              <a href="{{route('tasks.show',$task->id)}}">
+                <div
+                  class="rounded-lg  border-2 cursor-pointer text-slate-600 hover:text-blue-500 hover:border-green-700 hover:bg-slate-50">
+                  <div class="flex flex-col space-y-1 p-3">
+                    <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">
+                      {{ $task->name }}
+                    </h3>
+                    <div class="flex items-center gap-2">
+                      <div
+                        class="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
+                        {{ $task->priority }}
+                      </div>
+                      <div class="text-sm font-bold">
+                        Due date: {{ $task->due_date }}
+                      </div>
+                    </div>
                   </div>
                 </div>
+              </a>
+              @empty
+              <div class="italic pt-10 mx-auto col-span-2 text-slate-500 text-4xl cursor-default">
+                No tasks left to do!!
+                <span class="font-thin m-2 hidden md:block">
+                  ( ੭ ･ᴗ･ )੭
+                </span>
               </div>
-            </div>
-          </a>
-          @endforeach
+          @endforelse
 
-          {{-- <a href="{{route(" view-task")}}"> --}}
-          {{-- <a href="">
-            <div
-              class="rounded-lg  border-2 shadow-lg cursor-pointer text-slate-700 hover:text-slate-800 hover:border-slate-500 hover:bg-slate-50">
-              <div class="flex flex-col space-y-1 p-6">
-                <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">
-                  Task name
-                </h3>
-                <div class="flex items-center gap-2">
-                  <div
-                    class="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
-                    Task Status
-                  </div>
-                  <div class="text-sm">
-                    Due date: {data} days left
+            {{-- <a href="{{route(" view-task")}}"> --}}
+              {{-- <a href="">
+                <div
+                  class="rounded-lg  border-2 shadow-lg cursor-pointer text-slate-700 hover:text-slate-800 hover:border-slate-500 hover:bg-slate-50">
+                  <div class="flex flex-col space-y-1 p-6">
+                    <h3 class="whitespace-nowrap text-2xl font-semibold leading-none tracking-tight">
+                      Task name
+                    </h3>
+                    <div class="flex items-center gap-2">
+                      <div
+                        class="inline-flex w-fit items-center whitespace-nowrap rounded-full border px-2.5 py-0.5 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
+                        Task Status
+                      </div>
+                      <div class="text-sm">
+                        Due date: {data} days left
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </a> --}}
+              </a> --}}
         </div>
       </div>
       {{-- Quote card --}}
       <div class=" row-span-3 col-span-1 md:col-span-2 ">
-        <div class=" bg-white shadow rounded-lg">
+        <div class=" bg-slate-50 shadow rounded-lg">
           <div class="px-6 py-5 font-semibold font-mono text-2xl border-b border-gray-100">
             Quote of the day
           </div>
@@ -196,10 +201,10 @@
         </div>
       </div>
     </section>
-    @include('components.footer')
+    {{-- @include('components.footer') --}}
   </main>
   </div>
-  
+
   <x-notify::notify />
   @notifyJs
 

@@ -10,13 +10,13 @@
   @vite('resources/css/app.css')
 </head>
 
-<body class="bg-slate-100">
+<body class="bg-slate-100 text-slate-700">
   @include('components.navbar')
-  <div class="bg-slate-100 flex flex-col w-full min-h-screen">
-    <main class="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 p-4 md:gap-8 md:p-10">
-      <div class="rounded-lg bg-slate-300 max-w-6xl w-full mx-auto flex flex-col gap-8">
+  <div class=" flex flex-col w-full min-h-screen">
+    <main class=" p-4 md:p-12">
+      <div class="bg-slate-50 rounded-lg  max-w-3xl mx-auto flex flex-col gap-8">
         {{-- error display --}}
-        @if ($errors->any())
+        {{-- @if ($errors->any())
         <div class="alert alert-danger">
           <ul>
             @foreach ($errors->all() as $error)
@@ -35,11 +35,11 @@
         <div class="alert alert-success">
           {{ session('success') }}
         </div>
-        @endif
+        @endif --}}
 
         {{-- form starts --}}
         <form action="{{route('projects.store')}}" method="POST"
-          class="shadow-slate-300 shadow-2xl rounded-lg border border-slate-400">
+          class="shadow-slate-300 shadow rounded-lg border border-slate-200">
           @csrf
           <div class="space-y-1.5 p-6 flex flex-row items-center justify-between">
             <div class="space-y-1">
@@ -58,7 +58,7 @@
                   Project Name
                 </label>
                 <input
-                  class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  class="flex h-10 w-full rounded-md border border-input  px-3 py-2 text-sm outline-none border-slate-400 focus-within:border-2 "
                   id="name" name="name" placeholder="Enter project name" />
               </div>
               {{-- description --}}
@@ -69,7 +69,7 @@
                   Description
                 </label>
                 <textarea
-                  class="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  class="flex w-full rounded-md border border-input  px-3 py-2 text-sm outline-none border-slate-400 focus-within:border-2"
                   id="description" name="description" placeholder="Enter project description" rows="3"></textarea>
               </div>
             </div>
@@ -83,7 +83,7 @@
                   Start Date
                 </label>
                 <input
-                  class="flex h-10 w-full rounded-md border border-input px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-background"
+                  class="flex h-10 w-full rounded-md border border-input px-3 py-2 text-sm outline-none border-slate-400 focus-within:border-2  "
                   type="date" id="start_date" name="start_date" />
               </div>
               {{-- Due-date --}}
@@ -94,7 +94,7 @@
                   Due Date
                 </label>
                 <input
-                  class="flex h-10 w-full rounded-md border border-input px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 bg-background"
+                  class="flex h-10 w-full rounded-md border border-input px-3 py-2 text-sm outline-none border-slate-400 focus-within:border-2  "
                   type="date" id="due_date" name="due_date" />
               </div>
 
@@ -103,8 +103,8 @@
               {{-- Status --}}
               <div class="grid gap-2">
                 <label for="status"
-                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Status</label>
-                <select id="status" name="status" class="mt-1 p-2 w-auto border rounded-md">
+                  class="text-sm font-medium leading-none">Status</label>
+                <select id="status" name="status" class="mt-1 p-2 w-auto border rounded-md outline-none border-slate-400 focus-within:border-2">
                   <option class="bg-slate-800 text-slate-50" selected value="Not-Started">Not Started</option>
                   <option class="bg-slate-800 text-slate-50" value="Ongoing">Ongoing</option>
                   <option class="bg-slate-800 text-slate-50" value="Completed">Completed</option>
@@ -119,7 +119,7 @@
           <div class="items-center p-6 flex justify-end">
 
             <input type="submit"
-              class="bg-slate-400 hover:bg-slate-700 hover:text-slate-200 items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 cursor-pointer disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
+              class="bg-slate-700 text-slate-100 hover:bg-emerald-700 items-center justify-center whitespace-nowrap rounded-md text-sm font-medium cursor-pointer h-10 px-4 py-2"
               value="Create Project">
           </div>
 

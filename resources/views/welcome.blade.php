@@ -9,7 +9,7 @@
   @vite('resources/css/app.css')
 </head>
 
-<body class="bg-emerald-50 text-slate-900 ">
+<body class="bg-slate-100 text-slate-900 ">
   {{-- navbar here --}}
   @include('components.navbar-basic')
   {{-- 1st section --}}
@@ -26,7 +26,7 @@
           </div>
           <div class="flex flex-col gap-2 min-[400px]:flex-row">
             @auth
-            <a class="inline-flex h-10 items-center justify-center rounded-md px-8 text-sm font-medium text-primary-foreground shadow transition-colors bg-slate-300 hover:bg-indigo-600 hover:text-indigo-100"
+            <a class="inline-flex h-10 items-center justify-center rounded-md px-8 text-sm font-medium text-primary-foreground shadow transition-colors text-slate-200 bg-slate-700 hover:bg-indigo-600 hover:text-indigo-100"
             href="{{route('dashboard')}}">
             Dashboard
           </a>

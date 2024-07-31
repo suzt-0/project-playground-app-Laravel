@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" class="bg-slate-100">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>TEST-Project Description</title>
+  <title>Project Description</title>
   @notifyCss
   @vite('resources/css/app.css')
 </head>
 
-<body class="bg-slate-100">
+<body class="bg-slate-100 ">
   {{-- navbar starts --}}
   @include('components.navbar')
   {{-- navbar ends --}}
@@ -282,7 +282,7 @@
         @endif
       </div>
   </main>
-  @if ($errors->any())
+  {{-- @if ($errors->any())
   <div>
     <ul>
       @foreach ($errors->all() as $error)
@@ -301,10 +301,10 @@
   <div class="alert alert-success">
     {{ session('success') }}
   </div>
-  @endif
+  @endif --}}
 
   {{-- footer starts --}}
-  @include('components.footer')
+  {{-- @include('components.footer') --}}
   {{-- footer ends --}}
   <x-notify::notify />
   @notifyJs
