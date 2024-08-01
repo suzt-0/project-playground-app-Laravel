@@ -61,6 +61,7 @@ class ProjectController extends Controller
         ]);
 
         if($validator->fails()){
+            notify()->error('Failed to create project: ');
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
@@ -84,7 +85,7 @@ class ProjectController extends Controller
         } catch (\Exception $e) {
 
             // Handle failure
-            notify()->error('Failed to create project: ' . $e->getMessage());
+            notify()->error('Failed to create project: ');
             return redirect()->back()->with('error', 'Failed to create project: ' . $e->getMessage())->withInput();
         }
     }
