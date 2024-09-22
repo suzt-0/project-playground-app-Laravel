@@ -25,13 +25,13 @@ To set up the project locally, follow these steps:
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/project-management-system.git
+    git clone https://github.com/suzt-0/project-playground-app-Laravel.git
     ```
 
 2. Navigate to the project directory:
 
     ```bash
-    cd project-management-system
+    cd project-playground-app-Laravel
     ```
 
 3. Install dependencies:
@@ -65,6 +65,7 @@ To set up the project locally, follow these steps:
 - **Admin users** can create, edit, and delete projects and tasks. They can invite members to projects using the project name and ID, and remove members if needed.
 - **Members** can view and work on tasks, raise issues, and participate in discussions within a project.
 
+```
 ## Screenshots
 
 ### Dashboard
@@ -72,6 +73,7 @@ To set up the project locally, follow these steps:
 
 ### Task View
 ![Task View Screenshot](path-to-task-view-image)
+```
 
 ## Contributing
 
